@@ -21,7 +21,6 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
             
             name: name,
             email: email,
-            namecompany            : "",
             phone            : "", 
             photoprofile    :  photoprofile,
             hashed_password: hash,
@@ -29,8 +28,8 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
             tokenfirebase : tokenfirebase,
             created_at: new Date()
         });
- 
         newUser.save()
+
  
         .then(() => resolve({ status: 201, message: 'User Registered Sucessfully !',user : newUser }))
  
