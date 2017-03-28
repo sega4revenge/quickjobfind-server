@@ -66,7 +66,7 @@ module.exports = router => {
         }
     });
  
-    router.get('/users/:id', (req,res) => {
+    router.get('/users/', (req,res) => {
  
 
 
