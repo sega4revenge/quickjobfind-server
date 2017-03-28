@@ -68,18 +68,15 @@ module.exports = router => {
  
     router.get('/users/:id', (req,res) => {
  
-        if (checkToken(req)) {
- 
-            profile.getProfile(req.params.id)
+
+
+            profile.getProfile("58d9fef44c71231f91212a20")
  
             .then(result => res.json(result))
  
             .catch(err => res.status(err.status).json({ message: err.message }));
  
-        } else {
- 
-            res.status(401).json({ message: 'Invalid Token !' });
-        }
+
     });
  
     router.put('/users/:id', (req,res) => {

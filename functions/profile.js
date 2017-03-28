@@ -16,13 +16,24 @@
 //     });
 'use strict';
  
-const user = require('../models/user');
+const feed = require('../models/feed');
  
-exports.getProfile = email => 
+exports.getProfile = userid =>
  
     new Promise((resolve,reject) => {
  
-        user.find({ email: email }, { name: 1, email: 1, created_at: 1, _id: 0 })
+        feed.aggregate([{
+            $match : {
+                iduser : userid
+            }
+        }, {
+            $lookup: {
+                from: "users",
+                localField: "iduser",
+                foreignField: "_id",
+                as: "user"
+            }
+        }])
  
         .then(users => resolve(users[0]))
  
