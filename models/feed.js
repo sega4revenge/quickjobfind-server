@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const feedSchema = mongoose.Schema({
     id_sc : String,
-    iduser             : { type: Schema.Types.ObjectId, ref: 'user' },
+    iduser             : [{ type: Schema.Types.ObjectId, ref: 'user' }],
     number_view            : String,
     status            : String,
     location   :String,
