@@ -21,4 +21,4 @@ const userSchema = mongoose.Schema({
 mongoose.Promise = global.Promise;
 const db = mongoose.createConnection('mongodb://developserver.ga:27017/quickjobfind');
  
-module.exports = db.model('user', userSchema);
+const user = db.model('user', userSchema);

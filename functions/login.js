@@ -3,7 +3,7 @@
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
  
-exports.loginUser = (email, password,tokenfirebase) =>
+user.loginUser = (email, password,tokenfirebase) =>
  
     new Promise((resolve,reject) => {
  

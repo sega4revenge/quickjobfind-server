@@ -3,7 +3,7 @@
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
  
-exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =>
+user.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =>
  
     new Promise((resolve,reject) => {
           if (type=="1") {

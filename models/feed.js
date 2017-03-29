@@ -28,4 +28,4 @@ const feedSchema = mongoose.Schema({
 mongoose.Promise = global.Promise;
 const db  = mongoose.createConnection('mongodb://developserver.ga:27017/quickjobfind');
 
-module.exports = db.model('feed',feedSchema);
+const feed = db.model('feed', feedSchema);
