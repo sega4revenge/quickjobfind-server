@@ -26,7 +26,7 @@ module.exports = router => {
  
         } else {
 
-            login.loginUser(email, password,tokenfirebase)
+            exports.loginUser(email, password,tokenfirebase)
  
              .then(result => { 
  
