@@ -23,18 +23,7 @@ exports.getProfile =() =>
     new Promise((resolve,reject) => {
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
-        feed.aggregate([{
-            $match : {
-                iduser : ObjectId("58d9fef44c71231f91212a20")
-            }
-        }, {
-            $lookup: {
-                from: "users",
-                localField: "iduser",
-                foreignField: "_id",
-                as: "user"
-            }
-        }])
+        feed.find()
 
             .then(users => resolve(users[0]))
 
