@@ -1,9 +1,9 @@
 'use strict';
  
-const user = require('../models/user');
+const user = require('../models/feed');
 const bcrypt = require('bcryptjs');
  
-exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =>
+user.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =>
  
     new Promise((resolve,reject) => {
           if (type=="1") {
