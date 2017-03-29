@@ -18,7 +18,7 @@
 
 const feed = require('../models/feed');
 
-feed.getProfile = userid =>
+exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
         let ObjectId;
