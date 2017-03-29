@@ -23,7 +23,7 @@ exports.getProfile = userid =>
     new Promise((resolve,reject) => {
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
-        feed.aggregate([{
+        feed/*.aggregate([{
             $match : {
                 iduser : ObjectId(userid)
             }
@@ -34,7 +34,12 @@ exports.getProfile = userid =>
                 foreignField: "_id",
                 as: "user"
             }
-        }])
+        }])*/.find({ iduser: ObjectId(userid) })
+            .populate('_id')
+            .exec(function (err, post) {
+                if(err) throw err;
+                console.log(post);
+            })
 
             .then(users => resolve(users))
 
