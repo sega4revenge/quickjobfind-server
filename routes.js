@@ -9,7 +9,7 @@ const profile = require('./functions/profile');
 const password = require('./functions/password');
 const config = require('./config/config.json');
  
-module.user = router => {
+module.exports = router => {
  
     router.get('/a/', (req, res) => res.end('Welcome to Learn2Crack 123!'));
  

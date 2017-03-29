@@ -1,12 +1,12 @@
 'use strict';
  
-const user = require('../models/feed');
+const user = require('../models/user');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const randomstring = require("randomstring");
 const config = require('../config/config.json');
  
-user.changePassword = (email, password, newPassword) =>
+exports.changePassword = (email, password, newPassword) =>
  
     new Promise((resolve, reject) => {
  
