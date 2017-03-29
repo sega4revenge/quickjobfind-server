@@ -66,11 +66,11 @@ module.exports = router => {
         }
     });
  
-    router.get('/data/', (req,res) => {
+    router.get('/data/:id', (req,res) => {
  
 
 
-            profile.getProfile()
+            profile.getProfile("58d9fef44c71231f91212a20")
  
             .then(result => res.json(result))
  

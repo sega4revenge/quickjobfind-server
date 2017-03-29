@@ -18,14 +18,25 @@
 
 const feed = require('../models/feed');
 
-exports.getProfile =() =>
+exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
-        feed.find()
+        feed.aggregate([{
+            $match : {
+                iduser : ObjectId(userid)
+            }
+        }, {
+            $lookup: {
+                from: "users",
+                localField: "iduser",
+                foreignField: "_id",
+                as: "user"
+            }
+        }])
 
-            .then(users => resolve(users[0]))
+            .then(users => resolve(users))
 
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
