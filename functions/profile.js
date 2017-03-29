@@ -17,7 +17,7 @@
 'use strict';
 
 const feed = require('../models/feed');
-
+const user = require('../models/user');
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
@@ -34,17 +34,20 @@ exports.getProfile = userid =>
                 foreignField: "_id",
                 as: "user"
             }
-        }])*/.find({ iduser: ObjectId(userid) })
-            .populate('iduser')
+        }])*/.find({})
+            .populate({
+                path: 'user',
+                match: { user: ObjectId(userid)}
+
+            })
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
-                console.log(feed)
+
 
             })
 
             .then(users => resolve(users))
-
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
