@@ -14,11 +14,11 @@ const userSchema = mongoose.Schema({
     created_at        : String,
     type    : String,
     tokenfirebase : String,
-    evencreate : { type: Schema.Types.ObjectId, ref: 'feed' },
+    createby : { type: Schema.Types.ObjectId, ref: 'feed' },
  
 });
  
 mongoose.Promise = global.Promise;
 const db = mongoose.createConnection('mongodb://developserver.ga:27017/quickjobfind');
  
-const user = db.model('user', userSchema);
+module.exports = db.model('user', userSchema);
