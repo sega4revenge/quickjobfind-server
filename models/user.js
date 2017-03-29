@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
  
 const userSchema = mongoose.Schema({ 
-    id : { type: Schema.Types.ObjectId, ref: 'feed' },
+
     name             : String,
     email            : String,
     phone            : String, 
@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema({
     created_at        : String,
     type    : String,
     tokenfirebase : String,
-    
+    evencreate : { type: Schema.Types.ObjectId, ref: 'feed' },
  
 });
  
