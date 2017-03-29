@@ -35,7 +35,7 @@ exports.getProfile = userid =>
                 as: "user"
             }
         }])*/.find({ iduser: ObjectId(userid) })
-            .populate('_id')
+            .populate('id')
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
