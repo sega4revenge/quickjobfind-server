@@ -39,6 +39,8 @@ exports.getProfile = userid =>
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
+
+
             })
 
             .then(users => resolve(users))

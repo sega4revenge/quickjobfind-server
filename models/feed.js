@@ -34,7 +34,7 @@ const userSchema = mongoose.Schema({
     created_at        : String,
     type    : String,
     tokenfirebase : String,
-    createby : { type: Schema.Types.ObjectId, ref: 'feed' },
+    createby : [{ type: Schema.Types.ObjectId, ref: 'feed' }],
 
 });
 mongoose.Promise = global.Promise;
