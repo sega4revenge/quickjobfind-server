@@ -40,8 +40,9 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
                 reject({ status: 409, message: 'User Already Registered !' });
  
             } else {
- 
-                reject({ status: 500, message: 'Internal Server Error !' });
+                reject ({ status: 500, message: 'Internal Server Error !' });
+                throw err;
+
             }
         });
     });
