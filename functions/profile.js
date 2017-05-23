@@ -23,18 +23,7 @@ exports.getProfile = userid =>
     new Promise((resolve,reject) => {
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
-        feed/*.aggregate([{
-            $match : {
-                iduser : ObjectId(userid)
-            }
-        }, {
-            $lookup: {
-                from: "users",
-                localField: "iduser",
-                foreignField: "_id",
-                as: "user"
-            }
-        }])*/.find({})
+        feed.find({})
             .populate('user')
             .limit(5)
             .exec(function (err, post) {
