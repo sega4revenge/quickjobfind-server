@@ -35,11 +35,8 @@ exports.getProfile = userid =>
                 as: "user"
             }
         }])*/.find({})
-            .populate({
-                path: 'user',
-                match: { user: ObjectId(userid)}
-
-            })
+            .populate('user')
+            .limit(5)
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
