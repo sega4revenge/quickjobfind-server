@@ -25,7 +25,6 @@ exports.getProfile = userid =>
         ObjectId = require('mongodb').ObjectID;
         feed.find({})
             .populate('iduser')
-            .limit(5)
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
