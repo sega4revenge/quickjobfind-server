@@ -6,7 +6,7 @@ const mongoose = require("./connect");
 const locationSchema = mongoose.Schema({
 
     idlocation             : String,
-    tintuyentdung            : { type: String, ref: 'tintuyendung',field: 'macv' },
+    macv            : { type: String, ref: 'tintuyendung' },
     longitude            : String,
     latitude    :String,
 
