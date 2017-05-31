@@ -5,6 +5,7 @@
 
 const mongoose = require("./connect");
 const tintuyendungSchema = mongoose.Schema({
+    _id : String,
     macv : String,
     matd             : String,
     tencv            : String,
