@@ -2,7 +2,7 @@
 
 const mongoose = require("./connect");
 
-const Schema = mongoose.Schema;
+
 const locationSchema = mongoose.Schema({
 
     idlocation             : String,
