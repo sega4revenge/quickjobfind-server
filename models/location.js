@@ -1,13 +1,12 @@
 'use strict';
 
 const mongoose = require("./connect");
-const Schema = mongoose.Schema;
+
 
 const locationSchema = mongoose.Schema({
 
     idlocation             : String,
-    macv : String,
-    tintuyentdung            : { type: Schema.Types.ObjectId, ref: 'tintuyendung',field: 'macv' },
+    tintuyentdung            : { type: String, ref: 'tintuyendung',field: 'macv' },
     longitude            : String,
     latitude    :String,
 
