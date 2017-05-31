@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const locationSchema = mongoose.Schema({
 
     idlocation             : String,
+    macv : String,
     tintuyentdung            : { type: Schema.Types.ObjectId, ref: 'tintuyendung',field: 'macv' },
     longitude            : String,
     latitude    :String,
