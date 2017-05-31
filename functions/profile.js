@@ -23,6 +23,7 @@ exports.getProfile = userid =>
     new Promise((resolve,reject) => {
 
         location.find({})
+            .populate('macv')
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
