@@ -4,4 +4,4 @@
 'use strict';
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://developserver.ga:27017/quickjobfind');
-module.exports = exports = mongoose;
+module.exports = mongoose;

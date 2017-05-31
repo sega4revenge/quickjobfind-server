@@ -16,15 +16,14 @@
 //     });
 'use strict';
 
-const feed = require('../models/feed');
-const user = require('../models/user');
+const location = require('../models/location');
+const tintuyendung = require('../models/tintuyendung');
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
-        let ObjectId;
-        ObjectId = require('mongodb').ObjectID;
-        feed.find({})
-            .populate('iduser')
+
+        location.find({})
+            .populate('macv')
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
@@ -32,7 +31,7 @@ exports.getProfile = userid =>
 
             })
 
-            .then(users => resolve(users))
+            .then(tintuyendungs => resolve(tintuyendungs))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
