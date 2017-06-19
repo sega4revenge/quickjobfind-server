@@ -6,7 +6,6 @@ const multipart = require('multiparty');
 const register = require('./functions/register');
 const login = require('./functions/login');
 const profile = require('./functions/profile');
-const upload = require('./functions/upload');
 const password = require('./functions/password');
 const config = require('./config/config.json');
 const formidable = require('formidable');
