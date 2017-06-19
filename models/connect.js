@@ -3,5 +3,5 @@
  */
 'use strict';
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/quickjobfind');
+mongoose.connect('mongodb://45.76.179.89:27017/quickjobfind');
 module.exports = mongoose;
