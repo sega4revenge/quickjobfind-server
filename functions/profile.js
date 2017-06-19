@@ -16,30 +16,13 @@
 //     });
 'use strict';
 
-const feed = require('../models/feed');
 const user = require('../models/user');
+
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
-        let ObjectId;
-        ObjectId = require('mongodb').ObjectID;
-        feed/*.aggregate([{
-            $match : {
-                iduser : ObjectId(userid)
-            }
-        }, {
-            $lookup: {
-                from: "users",
-                localField: "iduser",
-                foreignField: "_id",
-                as: "user"
-            }
-        }])*/.find({})
-            .populate({
-                path: 'user',
-                match: { user: ObjectId(userid)}
 
-            })
+        user.find({})
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
