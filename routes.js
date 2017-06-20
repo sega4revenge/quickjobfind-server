@@ -6,6 +6,8 @@ const multipart = require('multiparty');
 const register = require('./functions/register');
 const login = require('./functions/login');
 const profile = require('./functions/profile');
+const fs = require('fs'),
+    url = require('url');
 const password = require('./functions/password');
 const config = require('./config/config.json');
 const formidable = require('formidable');
@@ -13,7 +15,24 @@ const path = require('path');
 const uploadDir = path.join('./uploads/');
 module.exports = router => {
 
-    router.get('/a/', (req, res) => res.end('Welcome to Learn2Crack 123!'));
+    router.get('/', (req, res) => {
+        const query = url.parse(req.url, true).query;
+        let pic;
+        pic = query.image;
+
+        //read the image using fs and send the image content back in the response
+        fs.readFile('/upload/' + pic, function (err, content) {
+            if (err) {
+                res.writeHead(400, {'Content-type':'text/html'})
+                console.log(err);
+                res.end("No such image");
+            } else {
+                //specify the content type in the response will be an image
+                res.writeHead(200,{'Content-type':'image/jpg'});
+                res.end(content);
+            }
+        });
+    });
  
     router.post('/authenticate', (req, res) => {
 
