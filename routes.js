@@ -170,7 +170,7 @@ module.exports = router => {
         form.parse(req, (err, fields, files) => {
             if (err) return res.status(500).json({ error: err });
             console.log(files);
-            res.status(200).json({ uploaded: true })
+            res.status(200).json({ uploaded: true , name : req.params.name})
         });
         form.on('fileBegin', function (name, file) {
             const [fileName, fileExt] = file.name.split('.');
