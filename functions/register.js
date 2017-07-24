@@ -35,8 +35,22 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
  
         .catch(err => {
  
-            if (err.code == 11000) {
- 
+            if (err.code === 11000) {
+                if(type===1)
+                    user.find({email: email})
+
+                        .then(users => {
+
+                            if (users.length === 0) {
+
+                                reject({ status: 404, message: 'User Not Found !' });
+
+                            } else {
+
+                                resolve({ status: 201, message: 'User Registered Sucessfully !',user : users[0] });
+
+                            }
+                        });
                 reject({ status: 409, message: 'User Already Registered !' });
  
             } else {
