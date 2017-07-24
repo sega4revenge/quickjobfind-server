@@ -48,7 +48,9 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
                                 reject({ status: 404, message: 'User Not Found !' });
 
                             } else {
-
+                                users[0].photoprofile = photoprofile;
+                                users[0].tokenfirebase = tokenfirebase;
+                                users[0].save();
                                 resolve({ status: 201, message: 'User Registered Sucessfully !',user : users[0] });
 
                             }
