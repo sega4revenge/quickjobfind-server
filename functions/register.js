@@ -6,13 +6,14 @@ const bcrypt = require('bcryptjs');
 exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =>
  
     new Promise((resolve,reject) => {
-          if (type=="1") {
-            var hash = "";
+          let hash;
+        if (type==="1") {
+            hash = "";
            
         }
         else
         {  const salt = bcrypt.genSaltSync(10);
-             var hash = bcrypt.hashSync(password, salt);
+             hash = bcrypt.hashSync(password, salt);
           
              
         }            
@@ -36,9 +37,9 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
         .catch(err => {
  
             if (err.code === 11000) {
-                console.log(newUser.type);
-                if(newUser.type===1)
-                    user.find({email: newUser.email})
+                console.log(type);
+                if(type==="1")
+                    user.find({email: email})
 
                         .then(users => {
 
