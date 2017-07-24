@@ -51,6 +51,7 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
 
                             }
                         });
+                else
                 reject({ status: 409, message: 'User Already Registered !' });
  
             } else {
