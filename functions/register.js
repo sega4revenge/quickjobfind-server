@@ -36,6 +36,7 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
         .catch(err => {
  
             if (err.code === 11000) {
+                console.log(type);
                 if(type===1)
                     user.find({email: email})
 
