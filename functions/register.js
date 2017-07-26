@@ -3,7 +3,7 @@
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
  
-exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =>
+exports.registerUser = (id,token,name, email, password,photoprofile,type,tokenfirebase) =>
  
     new Promise((resolve,reject) => {
           let hash;
@@ -20,12 +20,9 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
  
         const newUser = new user({
             
-            name: name,
+
             email: email,
-            phone            : "", 
-            photoprofile    :  photoprofile,
             hashed_password: hash,
-            type    :  type,
             tokenfirebase : tokenfirebase,
             created_at: new Date()
         });
@@ -38,17 +35,25 @@ exports.registerUser = (name, email, password,photoprofile,type,tokenfirebase) =
  
             if (err.code === 11000) {
                 console.log(type);
-                if(type==="1")
+                if(type!=="0")
                     user.find({email: email})
 
                         .then(users => {
 
-                            if (users.length === 0) {
-
-                                reject({ status: 404, message: 'User Not Found !' });
+                            if (type === 1) {
+                                users[0].facebook.name = name;
+                                users[0].facebook.id = id;
+                                users[0].facebook.token = token;
+                                users[0].facebook.photoprofile = photoprofile;
+                                users[0].tokenfirebase = tokenfirebase;
+                                users[0].save();
+                                resolve({ status: 201, message: 'User Registered Sucessfully !',user : users[0] });
 
                             } else {
-                                users[0].photoprofile = photoprofile;
+                                users[0].google.name = name;
+                                users[0].google.id = id;
+                                users[0].google.token = token;
+                                users[0].google.photoprofile = photoprofile;
                                 users[0].tokenfirebase = tokenfirebase;
                                 users[0].save();
                                 resolve({ status: 201, message: 'User Registered Sucessfully !',user : users[0] });

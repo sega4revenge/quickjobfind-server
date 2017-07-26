@@ -7,13 +7,23 @@ const userSchema = mongoose.Schema({
 
     name             : String,
     email            : { type: String, unique: true },
-    phone            : String, 
-    photoprofile    :String,
     hashed_password    : String,
     created_at        : String,
-    type    : String,
     tokenfirebase : String,
- 
+    facebook :{
+        id : String,
+        token : String,
+        email: String,
+        photoprofile    :String,
+        name : String
+    },
+    google :{
+        id : String,
+        token : String,
+        email: String,
+        photoprofile    :String,
+        name : String
+    }
 });
  
 mongoose.Promise = global.Promise;

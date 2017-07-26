@@ -62,7 +62,8 @@ module.exports = router => {
     });
  
     router.post('/users', (req, res) => {
- 
+        const id = req.body.token;
+        const token = req.body.token;
         const name = req.body.name;
         const email = req.body.email;
         const password = req.body.password;
@@ -75,7 +76,7 @@ module.exports = router => {
  
         } else {
  
-            register.registerUser(name, email, password,photoprofile,type,tokenfirebase)
+            register.registerUser(id,token,name, email, password,photoprofile,type,tokenfirebase)
  
             .then(result => {
  
