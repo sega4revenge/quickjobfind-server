@@ -9,7 +9,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
         let hash;
         let newUser;
         console.log(type);
-        if (type === "1") {
+        if (type === 1) {
             newUser = new user({
                 name: name,
                 email: email,
@@ -26,7 +26,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
             });
             console.log(abc);
         }
-        else if (type === "2") {
+        else if (type === 2) {
             newUser = new user({
                 name: name,
                 email: email,
