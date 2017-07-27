@@ -22,7 +22,7 @@ exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
 
-        user.find({})
+        user.find({_id : userid})
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);

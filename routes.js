@@ -88,10 +88,10 @@ module.exports = router => {
         }
     });
     router.get('/data/:id', (req,res) => {
- 
 
 
-            profile.getProfile("593e52da81988825a0c9962a")
+        const id = req.body.id;
+            profile.getProfile(id)
  
             .then(result => res.json(result))
  
