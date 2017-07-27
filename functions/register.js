@@ -41,7 +41,7 @@ exports.registerUser = (id,token,name, email, password,photoprofile,type,tokenfi
                         .then(users => {
 
                             if (type === 1) {
-                                if(users[0].name==="")
+                                if(users[0].name===null)
                                     users[0].name = name;
                                 users[0].facebook.name = name;
                                 users[0].facebook.id = id;
@@ -53,7 +53,7 @@ exports.registerUser = (id,token,name, email, password,photoprofile,type,tokenfi
                                 resolve({ status: 201, message: 'User Registered Sucessfully !',user : users[0] });
 
                             } else {
-                                if(users[0].name==="")
+                                if(users[0].name===null)
                                     users[0].name = name;
                                 users[0].google.name = name;
                                 users[0].google.id = id;
