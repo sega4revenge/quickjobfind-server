@@ -22,7 +22,7 @@ exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
         const ObjectId = require('mongoose').Types.ObjectId;
-        user.find({ _id : new ObjectId(userid)})
+        user.find({})
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
