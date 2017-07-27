@@ -90,7 +90,7 @@ module.exports = router => {
     router.get('/data/:id', (req,res) => {
 
 
-        const id = req.body.id;
+        const id = req.params.id;
             profile.getProfile(id)
  
             .then(result => res.json(result))
