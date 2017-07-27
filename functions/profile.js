@@ -17,13 +17,13 @@
 'use strict';
 
 const user = require('../models/user');
-const ObjectID = require('mongodb').ObjectID;
+
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
 
-        const obj_id = new ObjectID(userid);
-        user.find({ _id: obj_id})
+        const o_userId = mongoose.Types.ObjectId(userid);
+        user.find({ _id: o_userId})
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
