@@ -21,8 +21,7 @@ const user = require('../models/user');
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
-        const ObjectId = require('mongoose').Types.ObjectId;
-        user.find({ _id: new ObjectId(userid) })
+        user.find({ _id: ObjectId(userid) })
 
             .then(users => resolve(users[0]))
 
