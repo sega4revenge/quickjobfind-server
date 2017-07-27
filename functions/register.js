@@ -23,7 +23,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                     email: email
                 }
             });
-
+            console.log(abc);
         }
         else if (type === "2") {
             newUser = new user({
@@ -39,7 +39,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                     email: email
                 }
             });
-
+            console.log(xyz);
         }
         else {
             const salt = bcrypt.genSaltSync(10);
