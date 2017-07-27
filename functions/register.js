@@ -8,6 +8,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
     new Promise((resolve, reject) => {
         let hash;
         let newUser;
+        console.log(type);
         if (type === "1") {
             newUser = new user({
                 name: name,
@@ -65,7 +66,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
             .catch(err => {
 
                 if (err.code === 11000) {
-                    console.log(type);
+
                     if (type !== "0")
                         user.find({email: email})
 
@@ -77,7 +78,6 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                                     users[0].facebook.token = token;
                                     users[0].facebook.photoprofile = photoprofile;
                                     users[0].tokenfirebase = tokenfirebase;
-
                                     users[0].save();
                                     resolve({status: 201, message: 'User Registered Sucessfully !', user: users[0]});
 
