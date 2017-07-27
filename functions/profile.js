@@ -22,15 +22,10 @@ exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
         const ObjectId = require('mongoose').Types.ObjectId;
-        user.find({})
-            .exec(function (err, post) {
-                if(err) throw err;
-                console.log(post);
+        user.find({ _id: new ObjectId(userid) })
 
+            .then(users => resolve(users[0]))
 
-            })
-
-            .then(users => resolve(users))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
