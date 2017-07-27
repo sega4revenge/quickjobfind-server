@@ -23,7 +23,7 @@ exports.getProfile = userid =>
     new Promise((resolve,reject) => {
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
-        user.find({ _id: ObjectId("59799326f0ecb168bd7acfce")})
+        user.find({ _id: ObjectId(userid)})
             .exec(function (err, post) {
                 if(err) throw err;
                 console.log(post);
