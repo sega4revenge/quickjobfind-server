@@ -20,7 +20,8 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                     id: id,
                     token: token,
                     name: name,
-                    email: email
+                    email: email,
+                    photoprofile : photoprofile
                 }
             });
             console.log(abc);
@@ -36,7 +37,8 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                     id: id,
                     token: token,
                     name: name,
-                    email: email
+                    email: email,
+                    photoprofile : photoprofile
                 }
             });
             console.log(xyz);
