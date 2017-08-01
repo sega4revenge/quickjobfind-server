@@ -42,16 +42,9 @@ exports.getProfile = userid =>
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
         product.find({})
-            .populate('user')
-            .limit(5)
-            .exec(function (err, post) {
-                if(err) throw err;
-                console.log(post);
 
 
-            })
-
-            .then(users => resolve(users))
+            .then(products => resolve(products[0]))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
