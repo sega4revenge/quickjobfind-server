@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
 
     productname             : String,
     iduser             : { type: Schema.Types.ObjectId, ref: 'user' },
-    price            : String,
+    price            : String
 });
  
 mongoose.Promise = global.Promise;
