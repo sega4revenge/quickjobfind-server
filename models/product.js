@@ -1,6 +1,8 @@
 'use strict';
 
+
 const mongoose = require("./connect");
+const Schema = require("mongoose/lib/schema");
 
 
 const productSchema = mongoose.Schema({
