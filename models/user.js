@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require("./connect");
-
+const Schema = require("mongoose/lib/schema");
 
 const userSchema = mongoose.Schema({
     id : [{ type: Schema.Types.ObjectId, ref: 'product' }],
