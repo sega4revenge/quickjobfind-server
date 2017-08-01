@@ -4,7 +4,7 @@ const mongoose = require("./connect");
 
 
 const userSchema = mongoose.Schema({
-
+    id : [{ type: Schema.Types.ObjectId, ref: 'product' }],
     name             : String,
     email            : { type: String, unique: true },
     hashed_password    : String,
