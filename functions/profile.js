@@ -44,7 +44,14 @@ exports.getProfile = userid =>
         product.find({})
             .populate('user')
             .limit(5)
-            .then(products => resolve(products[0]))
+            .exec(function (err, post) {
+                if(err) throw err;
+                console.log(post);
+
+
+            })
+
+            .then(users => resolve(users))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
