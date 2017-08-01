@@ -44,7 +44,7 @@ exports.getProfile = userid =>
         product.find({})
             .populate({
                 path: 'user',
-                match: { user: ObjectId(userid)}
+                match: { _id: ObjectId(userid)}
 
             })
 
