@@ -48,7 +48,7 @@ exports.getProfile = userid =>
 
             })
 
-            .then(users => resolve(users[0]))
+            .then(products => resolve(products[0]))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
