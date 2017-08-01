@@ -1,6 +1,6 @@
 // 'use strict';
 
-// const feed = require('../models/feed');
+
 
 // exports.getProfile = () =>
 
@@ -15,9 +15,10 @@
 
 //     });
 'use strict';
-
+const product = require('../models/product');
 const user = require('../models/user');
 
+/*
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
@@ -28,6 +29,22 @@ exports.getProfile = userid =>
                 if(err) throw err;
                 console.log(post);
 
+
+            })
+
+            .then(users => resolve(users[0]))
+            .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
+
+    });*/
+exports.getProfile = userid =>
+
+    new Promise((resolve,reject) => {
+        let ObjectId;
+        ObjectId = require('mongodb').ObjectID;
+        product.find({})
+            .populate({
+                path: 'user',
+                match: { user: ObjectId(userid)}
 
             })
 
