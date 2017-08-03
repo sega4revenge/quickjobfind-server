@@ -39,6 +39,7 @@ exports.getProfile = userid =>
 exports.getProfile = userid =>
 
     new Promise((resolve,reject) => {
+
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
         product.find({})

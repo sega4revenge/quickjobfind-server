@@ -24,6 +24,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                     photoprofile : photoprofile
                 }
             });
+
             console.log("abc");
         }
         else if (type === 2) {
