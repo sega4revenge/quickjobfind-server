@@ -27,9 +27,9 @@ exports.uploadproduct = (productid, image) =>
           let ObjectId;
           ObjectId = require('mongodb').ObjectID;
 
-          product.findOne({iduser : ObjectId(productid)})
+          product.find({iduser : ObjectId(productid)})
               .populate('iduser')
-            /*  .then(products => {
+              .then(products => {
 
                   if (products.length === 0) {
 
@@ -40,7 +40,7 @@ exports.uploadproduct = (productid, image) =>
                       return products[0];
 
                   }
-              })*/
+              })
 
               .then(product => {
                   product.images.push(image);
