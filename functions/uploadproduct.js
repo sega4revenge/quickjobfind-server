@@ -24,9 +24,9 @@ exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
 
-        const id = mongoose.Types.ObjectId(userid);
 
-        product.find({iduser : id})
+
+        product.find({iduser : userid})
             .populate('iduser')
             .then(products => {
 
