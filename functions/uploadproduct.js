@@ -40,7 +40,26 @@ exports.uploadproduct = (userid,image) =>
                     reject({ status: 200, message: 'Ok !' });
                 }
             })*/
-            .then(products => resolve(products[0]))
+           /* .then(products => resolve(products[0]))*/
+            .then(products => {
+
+                if (products.length === 0) {
+
+                    reject({ status: 404, message: 'User Not Found !' });
+
+                } else {
+
+                    return products[0];
+
+                }
+            })
+
+            .then(product => {
+
+                product.images.push(image);
+                product.save();
+                resolve({ status: 200, product : product });
+            })
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
