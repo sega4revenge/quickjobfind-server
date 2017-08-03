@@ -10,12 +10,7 @@ const productSchema = mongoose.Schema({
     productname             : String,
     iduser             : { type: Schema.Types.ObjectId, ref: 'user' },
     price            : String,
-    image: {
-        image1: String,
-        image2: String,
-        image3: String,
-        image4: String
-    }
+    images : [String]
 });
  
 mongoose.Promise = global.Promise;

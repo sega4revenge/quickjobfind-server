@@ -6,6 +6,7 @@ const multipart = require('multiparty');
 const register = require('./functions/register');
 const login = require('./functions/login');
 const profile = require('./functions/profile');
+const uploadproduct = require('./functions/uploadproduct');
 const fs = require('fs'),
     url = require('url');
 const password = require('./functions/password');
@@ -171,6 +172,7 @@ module.exports = router => {
         form.parse(req, (err, fields, files) => {
             if (err) return res.status(500).json({ error: err });
             console.log(files.image.path);
+            uploadproduct.uploadproduct(fields.iduser,files.image.path);
             res.status(200).json({ uploaded: true , name : fields.iduser})
         });
         form.on('fileBegin', function (name, file) {
