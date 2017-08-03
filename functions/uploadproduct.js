@@ -26,7 +26,7 @@ exports.uploadproduct = (userid,image) =>
 
 
 
-        product.find({iduser : mongoose.Types.ObjectId.fromString(userid)})
+        product.find({iduser : mongoose.Types.ObjectId(userid)})
             .populate('iduser')
             .then(products => {
 
