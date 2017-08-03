@@ -29,7 +29,7 @@ exports.uploadproduct = (userid,image) =>
 
         product.find({})
             .populate('iduser')
-            .then(products => {
+           /* .then(products => {
 
 
 
@@ -39,7 +39,8 @@ exports.uploadproduct = (userid,image) =>
                     products[0].images.push(image);
                     reject({ status: 200, message: 'Ok !' });
                 }
-            })
+            })*/
+            .then(products => resolve(products[0]))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
