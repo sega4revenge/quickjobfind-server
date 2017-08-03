@@ -25,13 +25,9 @@ exports.uploadproduct = (userid,image) =>
     new Promise((resolve,reject) => {
 
         const ObjectId = require('mongoose').Types.ObjectId;
-
-        product.findOne({iduser: ObjectId(userid)})
-            .populate({
-                path: 'iduser',
-                match: { iduser: { $gte: ObjectId(userid) }},
-
-            }).
+        console.log(ObjectId(userid));
+        product.findOne({})
+            .populate('iduser').
              exec(function (err, stories) {
             if (err) return handleError(err);
 
