@@ -171,7 +171,7 @@ module.exports = router => {
         form.parse(req, (err, fields, files) => {
             if (err) return res.status(500).json({ error: err });
             console.log(files.image.path);
-            res.status(200).json({ uploaded: true , name : fields.name})
+            res.status(200).json({ uploaded: true , name : fields.iduser})
         });
         form.on('fileBegin', function (name, file) {
             const [fileName, fileExt] = file.name.split('.');
