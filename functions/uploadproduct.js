@@ -26,7 +26,7 @@ exports.uploadproduct = (userid,image) =>
 
 
 
-        product.find({})
+        product.find({iduser : userid})
             .populate('iduser')
             .then(products => {
 
