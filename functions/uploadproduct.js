@@ -24,10 +24,10 @@ exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
 
-        const ObjectId = require('mongoose').Types.ObjectId;
-        product.findOne({})
-            .populate('iduser')
 
+
+        product.find({})
+            .populate('iduser')
             .then(products => {
 
                 if (products.length === 0) {
