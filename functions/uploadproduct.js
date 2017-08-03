@@ -28,6 +28,7 @@ exports.uploadproduct = (userid,image) =>
         console.log(ObjectId(userid));
 
         product.find({iduser : ObjectId("5979a01378ac6e6af80da44d")})
+            .populate('iduser')
             .then(products => {
 
 
