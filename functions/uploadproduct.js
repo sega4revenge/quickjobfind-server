@@ -23,7 +23,7 @@ const mongoose = require("mongoose");
 exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
-        userid = "5979a01378ac6e6af80da44a";
+
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
 
