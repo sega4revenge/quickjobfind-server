@@ -25,7 +25,6 @@ exports.uploadproduct = (userid,image) =>
     new Promise((resolve,reject) => {
 
         const ObjectId = require('mongoose').Types.ObjectId;
-        console.log(ObjectId(userid));
         product.findOne({})
             .populate('iduser')
 
