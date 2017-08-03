@@ -23,11 +23,11 @@ const mongoose = require("mongoose");
 exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
-
+        userid = "597ff12a02ce92709ec56d40";
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
 
-        product.find({iduser : ObjectId(userid)})
+        product.findOne({iduser : ObjectId(userid)})
             .populate('iduser')
             .then(products => {
 
