@@ -29,6 +29,7 @@ exports.uploadproduct = (userid,image) =>
             iduser: userid,
             price: "3000",
         });
+        newProduct.productid = newProduct._id;
         newProduct.save();
       /*  console.log(userid);
         console.log(userid);
