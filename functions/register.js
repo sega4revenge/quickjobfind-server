@@ -42,7 +42,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                     photoprofile : photoprofile
                 }
             });
-            console.log("xyz");
+
         }
         else {
             const salt = bcrypt.genSaltSync(10);

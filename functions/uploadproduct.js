@@ -23,7 +23,14 @@ const mongoose = require("mongoose");
 exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
-        console.log(userid);
+        let newProduct;
+        newProduct = new product({
+
+            iduser: userid,
+            price: "3000",
+        });
+        newProduct.save();
+      /*  console.log(userid);
         console.log(userid);
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
@@ -47,6 +54,6 @@ exports.uploadproduct = (userid,image) =>
                 product.images.push(image);
                 product.save();
             })
-            .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
+            .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))*/
 
     });
