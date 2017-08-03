@@ -27,7 +27,7 @@ exports.uploadproduct = (productid, image) =>
           let ObjectId;
           ObjectId = require('mongodb').ObjectID;
 
-          product.find({iduser : ObjectId(productid)})
+          product.find({ _id : ObjectId(productid)})
               .populate('iduser')
               .then(products => {
 
