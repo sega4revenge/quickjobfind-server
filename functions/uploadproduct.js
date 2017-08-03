@@ -27,20 +27,8 @@ exports.uploadproduct = (userid,image) =>
         ObjectId = require('mongodb').ObjectID;
         console.log(ObjectId(userid));
 
-        product.find({})
+        product.find({iduser : ObjectId(userid)})
             .populate('iduser')
-           /* .then(products => {
-
-
-
-                if (products.length === 0) {
-                    reject({ status: 404, message: 'Product iduser Not Found !' });
-                } else {
-                    products[0].images.push(image);
-                    reject({ status: 200, message: 'Ok !' });
-                }
-            })*/
-           /* .then(products => resolve(products[0]))*/
             .then(products => {
 
                 if (products.length === 0) {
@@ -55,10 +43,8 @@ exports.uploadproduct = (userid,image) =>
             })
 
             .then(product => {
-
                 product.images.push(image);
                 product.save();
-                resolve({ status: 200, product : product });
             })
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
