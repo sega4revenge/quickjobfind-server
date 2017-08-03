@@ -24,7 +24,6 @@ exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
         console.log(userid);
-        userid = "5979a01378ac6e6af80da44a";
         console.log(userid);
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
