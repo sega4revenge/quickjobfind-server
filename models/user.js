@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
         photoprofile    :String,
         name : String
     },
-    array : [String],
+    images : [String],
 });
  
 mongoose.Promise = global.Promise;
