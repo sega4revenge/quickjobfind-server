@@ -22,7 +22,8 @@ const userSchema = mongoose.Schema({
         email: String,
         photoprofile    :String,
         name : String
-    }
+    },
+    array : [String],
 });
  
 mongoose.Promise = global.Promise;
