@@ -26,8 +26,12 @@ exports.uploadproduct = (userid,image) =>
 
 
 
-        product.find({iduser : userid})
-            .populate('iduser')
+        product.find({})
+            .populate({
+                path: 'iduser',
+                match: { iduser: ObjectId(userid)}
+
+            })
             .then(products => {
 
                 if (products.length === 0) {

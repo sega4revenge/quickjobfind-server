@@ -43,11 +43,7 @@ exports.getProfile = userid =>
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
         product.find({})
-            .populate({
-                path: 'iduser',
-                match: { iduser: ObjectId(userid)}
-
-            })
+            .populate('iduser')
             .limit(5)
             .then(products => resolve(products[0]))
             .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
