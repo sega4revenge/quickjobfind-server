@@ -1,7 +1,6 @@
 // 'use strict';
 
 
-
 // exports.getProfile = () =>
 
 //     new Promise((resolve,reject) => {
@@ -19,42 +18,34 @@ const product = require('../models/product');
 const mongoose = require("mongoose");
 
 
+exports.uploadproduct = (productid, image) =>
 
-exports.uploadproduct = (userid,image) =>
+    new Promise((resolve, reject) => {
+       
+          console.log(productid);
 
-    new Promise((resolve,reject) => {
-        let newProduct;
-        newProduct = new product({
+          let ObjectId;
+          ObjectId = require('mongodb').ObjectID;
 
-            iduser: userid,
-            price: "3000",
-        });
-        newProduct.productid = newProduct._id;
-        newProduct.save();
-      /*  console.log(userid);
-        console.log(userid);
-        let ObjectId;
-        ObjectId = require('mongodb').ObjectID;
+          product.findOne({iduser : ObjectId(productid)})
+              .populate('iduser')
+            /*  .then(products => {
 
-        product.find({iduser : ObjectId(userid)})
-            .populate('iduser')
-            .then(products => {
+                  if (products.length === 0) {
 
-                if (products.length === 0) {
+                      reject({ status: 404, message: 'User Not Found !' });
 
-                    reject({ status: 404, message: 'User Not Found !' });
+                  } else {
 
-                } else {
+                      return products[0];
 
-                    return products[0];
+                  }
+              })*/
 
-                }
-            })
-
-            .then(product => {
-                product.images.push(image);
-                product.save();
-            })
-            .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))*/
+              .then(product => {
+                  product.images.push(image);
+                  product.save();
+              })
+              .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
