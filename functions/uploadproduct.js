@@ -29,7 +29,7 @@ exports.uploadproduct = (userid,image) =>
         product.find({})
             .populate({
                 path: 'iduser',
-                match: { iduser: ObjectId(userid)}
+                match: { iduser: { $gte: ObjectId(userid) }},
 
             })
             .then(products => {
