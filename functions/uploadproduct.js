@@ -31,6 +31,10 @@ exports.uploadproduct = (userid,image) =>
                 path: 'iduser',
                 match: { iduser: { $gte: ObjectId(userid) }},
 
+            }).
+             exec(function (err, stories) {
+            if (err) return handleError(err);
+
             })
             .then(products => {
 
