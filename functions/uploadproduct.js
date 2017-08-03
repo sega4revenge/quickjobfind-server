@@ -24,9 +24,10 @@ exports.uploadproduct = (userid,image) =>
 
     new Promise((resolve,reject) => {
 
+        let ObjectId;
+        ObjectId = require('mongodb').ObjectID;
 
-
-        product.find({iduser : userid})
+        product.find({iduser : ObjectId(userid)})
             .populate('iduser')
             .then(products => {
 
