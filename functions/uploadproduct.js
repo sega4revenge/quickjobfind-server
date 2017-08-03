@@ -27,11 +27,8 @@ exports.uploadproduct = (userid,image) =>
         const ObjectId = require('mongoose').Types.ObjectId;
         console.log(ObjectId(userid));
         product.findOne({})
-            .populate('iduser').
-             exec(function (err, stories) {
-            if (err) return handleError(err);
+            .populate('iduser')
 
-            })
             .then(products => {
 
                 if (products.length === 0) {
