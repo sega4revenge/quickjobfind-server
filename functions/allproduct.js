@@ -8,7 +8,7 @@ exports.allproduct = () =>
     new Promise((resolve,reject) => {
 
         product.find()
-
+            .populate('iduser')
             .then(products => {
 
                 if (products.length === 0) {
