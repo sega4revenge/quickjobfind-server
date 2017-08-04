@@ -3,7 +3,7 @@
 const product = require('../models/product');
 
 
-exports.createproduct = (userid, price) =>
+exports.createproduct = (userid, prodctname, price, description) =>
 
     new Promise((resolve, reject) => {
 
@@ -12,7 +12,9 @@ exports.createproduct = (userid, price) =>
 
         newproduct = new product({
             iduser: userid,
-            price: price
+            productname: prodctname,
+            price: price,
+            description: description
         });
 
 
