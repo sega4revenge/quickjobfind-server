@@ -25,7 +25,7 @@ exports.allproduct = () =>
             .then(product => {
 
 
-                    resolve({ status: 200, product : product });
+                    resolve({ status: 200, listproduct : product });
 
             })
 
