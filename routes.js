@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const multipart = require('multiparty');
 const register = require('./functions/register');
 const login = require('./functions/login');
+const allproduct = require('./functions/allproduct');
 const profile = require('./functions/profile');
 const uploadproduct = require('./functions/uploadproduct');
 const fs = require('fs'),
@@ -56,13 +57,38 @@ module.exports = router => {
                     const token = jwt.sign(result, config.secret, {expiresIn: 1440});
 
                     res.status(result.status).json({message: result.message, token: token, user: result.user});
+                    console.log(user)
 
                 })
 
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
     });
+    router.post('/allproduct', (req, res) => {
 
+
+        // const email = req.body.email;
+        // const password = req.body.password;
+        // const tokenfirebase = req.body.tokenfirebase;
+
+        // if (!email || !password || !tokenfirebase) {
+        //
+        //     res.status(400).json({message: 'Invalid Request !'});
+        //
+        // } else {
+
+            allproduct.allproduct()
+
+                .then(result => {
+
+                    res.status(result.status).json({product : result.product});
+                    console.log(user)
+
+                })
+
+                .catch(err => res.status(err.status).json({message: err.message}));
+
+    });
     router.post('/users', (req, res) => {
         const id = req.body.token;
         const token = req.body.token;
@@ -91,7 +117,9 @@ module.exports = router => {
     });
     router.post('/createproduct', (req, res) => {
         const userid = req.body.userid;
+        const productname = req.body.productname;
         const price = req.body.price;
+        const description = req.body.description;
 
         if (!userid || !price) {
 
@@ -99,7 +127,7 @@ module.exports = router => {
 
         } else {
 
-            createproduct.createproduct(userid, price)
+            createproduct.createproduct(userid, productname, price, description)
 
                 .then(result => {
 
