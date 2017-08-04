@@ -22,9 +22,9 @@ exports.createproduct = (userid, prodctname, price, description) =>
 
 
             .then(() =>{  newproduct.populate('iduser', function(err) {
-                    console.log(err);
+                resolve({status: 201, message: 'product Registered Sucessfully !', product: newproduct})
                 });
-                    resolve({status: 201, message: 'product Registered Sucessfully !', product: newproduct})})
+                   })
 
 
             .catch(err => {
