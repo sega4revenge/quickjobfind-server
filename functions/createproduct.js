@@ -21,7 +21,7 @@ exports.createproduct = (userid, prodctname, price, description) =>
         newproduct.save()
 
 
-            .then(() =>{  newproduct.populate('iduser', function(err) {
+            .then(() =>{  newproduct.populate('iduser','_id name email images', function(err) {
                 resolve({status: 201, message: 'product Registered Sucessfully !', product: newproduct})
                 });
                    })
