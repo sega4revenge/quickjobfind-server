@@ -26,7 +26,7 @@ module.exports = router => {
         //read the image using fs and send the image content back in the response
         fs.readFile('./uploads/' + pic, function (err, content) {
             if (err) {
-                res.writeHead(400, {'Content-type': 'text/html'})
+                res.writeHead(400, {'Content-type': 'text/html'});
                 console.log(err);
                 res.end("No such image");
             } else {
