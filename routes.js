@@ -56,6 +56,7 @@ module.exports = router => {
                     const token = jwt.sign(result, config.secret, {expiresIn: 1440});
 
                     res.status(result.status).json({message: result.message, token: token, user: result.user});
+                    console.log(user)
 
                 })
 
