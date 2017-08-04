@@ -82,7 +82,7 @@ module.exports = router => {
                 .then(result => {
 
                     res.status(result.status).json({product : result.product});
-                    console.log(user)
+                    console.log(product)
 
                 })
 
