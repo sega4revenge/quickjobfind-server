@@ -80,12 +80,7 @@ module.exports = router => {
             allproduct.allproduct()
                 // .then(result => res.json(result))
 
-                .then(result => {
-
-                    res.status(result.status).json({listproduct : result.product});
-                    console.log(product)
-
-                })
+                .then(result => res.json(result))
 
                 .catch(err => res.status(err.status).json({message: err.message}));
 
