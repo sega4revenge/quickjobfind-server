@@ -78,13 +78,14 @@ module.exports = router => {
         // } else {
 
             allproduct.allproduct()
+                .then(result => res.json(result))
 
-                .then(result => {
-
-                    res.status(result.status).json({product : result.product});
-                    console.log(product)
-
-                })
+                // .then(result => {
+                //
+                //     res.status(result.status).json({product : result.product});
+                //     console.log(product)
+                //
+                // })
 
                 .catch(err => res.status(err.status).json({message: err.message}));
 
