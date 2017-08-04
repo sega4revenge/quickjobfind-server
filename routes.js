@@ -22,7 +22,7 @@ module.exports = router => {
         const query = url.parse(req.url, true).query;
         let pic;
         pic = query.image;
-        Console.log(pic);
+        console.log(pic);
         //read the image using fs and send the image content back in the response
         fs.readFile('./uploads/' + pic, function (err, content) {
             if (err) {
