@@ -221,7 +221,7 @@ module.exports = router => {
         form.uploadDir = uploadDir;
         form.parse(req, (err, fields, files) => {
             if (err) return res.status(500).json({error: err});
-            console.log(files.image.path.split("uploads/"));
+            console.log(files.image.path.split("uploads/").get[1]);
             uploadproduct.uploadproduct(fields.productid, files.image.path);
             res.status(200).json({uploaded: true, name: fields.iduser})
         });
