@@ -21,10 +21,11 @@ exports.createproduct = (userid, prodctname, price, description) =>
         newproduct.save()
 
 
-            .then(() =>{  newproduct.populate('iduser','_id name email images', function(err) {
-                resolve({status: 201, message: 'product Registered Sucessfully !', product: newproduct})
+            .then(() => {
+                newproduct.populate('iduser', '_id name email images', function (err) {
+                    resolve({status: 201, message: 'product Registered Sucessfully !', product: newproduct})
                 });
-                   })
+            })
 
 
             .catch(err => {
@@ -32,7 +33,7 @@ exports.createproduct = (userid, prodctname, price, description) =>
                 if (err.code === 11000) {
 
 
-                        reject({status: 409, message: 'product Already Registered !'});
+                    reject({status: 409, message: 'product Already Registered !'});
 
                 } else {
                     reject({status: 500, message: 'Internal Server Error !'});

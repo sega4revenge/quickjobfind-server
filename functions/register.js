@@ -14,6 +14,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                 name: name,
                 email: email,
                 hashed_password: "",
+                photoprofile : photoprofile,
                 tokenfirebase: tokenfirebase,
                 created_at: new Date(),
                 facebook: {
@@ -32,6 +33,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
                 name: name,
                 email: email,
                 hashed_password: "",
+                photoprofile : photoprofile,
                 tokenfirebase: tokenfirebase,
                 created_at: new Date(),
                 google: {
@@ -51,6 +53,7 @@ exports.registerUser = (id, token, name, email, password, photoprofile, type, to
             newUser = new user({
                 name: name,
                 email: email,
+                photoprofile : photoprofile,
                 hashed_password: hash,
                 tokenfirebase: tokenfirebase,
                 created_at: new Date(),
