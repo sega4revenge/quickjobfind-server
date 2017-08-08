@@ -7,6 +7,13 @@ const Schema = require("mongoose/lib/schema");
 
 const productSchema = mongoose.Schema({
     iduser: {type: Schema.Types.ObjectId, ref: 'user'},
+    productname         : String,
+    price               : String,
+    number              : String,
+    location            : String,
+    description         : String,
+    categoryid          : String,
+    images              : [String]
     productname: String,
     price: String,
     number: String,
