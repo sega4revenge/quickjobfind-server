@@ -64,7 +64,7 @@ module.exports = router => {
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
     });
-    router.get('/allproduct', (req, res) => {
+    router.post('/allproduct', (req, res) => {
 
 
         // const email = req.body.email;
