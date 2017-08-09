@@ -119,7 +119,7 @@ module.exports = router => {
         const description = req.body.description;
         const type = req.body.type;
 
-        if (!userid || !price) {
+        if (!userid) {
 
             res.status(400).json({message: 'Invalid Request !'});
 
