@@ -8,9 +8,10 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
     new Promise((resolve, reject) => {
 
         let newproduct;
-        console.log(price);
+
         console.log(type);
         if(type === 1){
+            console.log(price);
             newproduct = new product({
                 iduser: userid,
                 productname: prodctname,
@@ -20,6 +21,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
                 type: type
             });
         }else {
+            console.log(price);
             newproduct = new product({
                 iduser: userid,
                 productname: prodctname,
