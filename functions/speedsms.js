@@ -7,7 +7,7 @@ exports.sendsms = (to, smsContent, smsType, brandName, dlr) =>
 
         const ROOT_URL = "http://api.speedsms.vn/index.php";
         const accessToken = "_9d_Kf2LvM2rvM-oi6UIDjgBzjvKezMy";
-        if (!is_array(to) || empty(to) || empty(smsContent))
+        if (!to || !smsContent)
             return null;
 
         type = SMS_TYPE_CSKH;
