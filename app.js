@@ -13,6 +13,11 @@ app.use(logger('dev'));
 require('./routes')(router);
 app.use('/api/v1', router);
 
-app.listen(port);
+
 console.log(`App Runs on ${port}`);
-console.log(app.address().address);
+
+const server = app.listen(port, function () {
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log('running at http://' + host + ':' + port)
+});
