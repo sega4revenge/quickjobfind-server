@@ -91,7 +91,11 @@ module.exports = router => {
         const name = req.body.name;
         const email = req.body.email;
         const password = req.body.password;
-        const photoprofile = req.body.photoprofile;
+        let photoprofile ;
+        if(!req.body.photoprofile)
+            photoprofile = "uploads/logo.png";
+        else
+            photoprofile = req.body.photoprofile;
         const type = req.body.type;
         const tokenfirebase = req.body.tokenfirebase;
         if (!name) {
