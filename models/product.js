@@ -13,6 +13,7 @@ const productSchema = mongoose.Schema({
     location            : String,
     description         : String,
     categoryid          : String,
+    type                : String,
     time : String,
     images: [String]
 });

@@ -115,7 +115,9 @@ module.exports = router => {
         const userid = req.body.userid;
         const productname = req.body.productname;
         const price = req.body.price;
+        const number = req.body.number;
         const description = req.body.description;
+        const type = req.body.type;
 
         if (!userid || !price) {
 
@@ -123,7 +125,7 @@ module.exports = router => {
 
         } else {
 
-            createproduct.createproduct(userid, productname, price, description)
+            createproduct.createproduct(userid, productname, price, number, description, type)
 
                 .then(result => {
 

@@ -3,18 +3,18 @@
 const product = require('../models/product');
 
 
-exports.createproduct = (userid, prodctname, price, description) =>
+exports.createproduct = (userid, prodctname, price, number, description, type) =>
 
     new Promise((resolve, reject) => {
 
         let newproduct;
-
-
         newproduct = new product({
             iduser: userid,
             productname: prodctname,
             price: price,
-            description: description
+            number: number,
+            description: description,
+            type: type
         });
 
 
