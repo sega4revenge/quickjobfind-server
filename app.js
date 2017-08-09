@@ -15,3 +15,4 @@ app.use('/api/v1', router);
 
 app.listen(port);
 console.log(`App Runs on ${port}`);
+console.log(app.address().address);
