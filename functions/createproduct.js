@@ -25,7 +25,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
             newproduct = new product({
                 iduser: userid,
                 productname: prodctname,
-                price: "",
+                price: "gjgfk",
                 number: number,
                 description: description,
                 type: type
