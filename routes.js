@@ -32,7 +32,7 @@ module.exports = router => {
                 res.end("No such image");
             } else {
                 //specify the content type in the response will be an image
-                res.writeHead(200, {'Content-type': 'image/jpg'});
+                res.writeHead(200, {'Content-type': 'image/JPG'});
                 res.end(content);
             }
         });
