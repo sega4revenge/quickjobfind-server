@@ -19,6 +19,6 @@ console.log(`App Runs on ${port}`);
 const server = app.listen(port, function () {
     const host = server.address().address;
     require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-        debug('Example app listening at http://%s:%s', add, port);
+        console.log('Example app listening at http://%s:%s', add, port);
     })
 });
