@@ -7,7 +7,7 @@ exports.allproduct = () =>
 
     new Promise((resolve,reject) => {
 
-        product.find()
+        product.find({type: "1"})
             .populate('iduser')
             .then(products => {
 
