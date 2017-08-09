@@ -11,16 +11,16 @@ exports.sendsms = (to, smsContent, smsType, brandName, dlr) =>
             return null;
 
         type = SMS_TYPE_CSKH;
-        if (!empty(smsType))
+        if (smsType)
             type = smsType;
 
         if (type < 1 && type > 3)
             return null;
 
-        if (type === 3 && empty(brandName))
+        if (type === 3 && !brandName)
             return null;
 
-        if (strlen(brandName) > 11)
+        if (brandName.length > 11)
             return null;
 
         if (type !== 2)
