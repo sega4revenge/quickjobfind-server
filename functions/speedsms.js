@@ -10,7 +10,7 @@ exports.sendsms = (to, smsContent, smsType, brandName, dlr) =>
         if (!is_array(to) || empty(to) || empty(smsContent))
             return null;
 
-        type = SpeedSMSAPI::SMS_TYPE_CSKH;
+        type = SMS_TYPE_CSKH;
         if (!empty(smsType))
             type = smsType;
 
