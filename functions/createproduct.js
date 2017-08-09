@@ -10,7 +10,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
         let newproduct;
 
         console.log(type);
-        if(type === 1){
+        if (type === "1") {
             console.log(price);
             newproduct = new product({
                 iduser: userid,
@@ -20,7 +20,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
                 description: description,
                 type: type
             });
-        }else {
+        } else {
             console.log(price);
             newproduct = new product({
                 iduser: userid,
@@ -31,7 +31,6 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
                 type: type
             });
         }
-
 
 
         newproduct.save()
