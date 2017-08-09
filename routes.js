@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const multipart = require('multiparty');
 const register = require('./functions/register');
 const login = require('./functions/login');
+const sms = require('./functions/speedsms');
 const allproduct = require('./functions/allproduct');
 const profile = require('./functions/profile');
 const uploadproduct = require('./functions/uploadproduct');
@@ -36,7 +37,9 @@ module.exports = router => {
             }
         });
     });
-
+    router.get('/sendsms', (req, res) => {
+      sms.sendsms("0906448076","abc","","",1)
+    });
     router.post('/authenticate', (req, res) => {
 
 
