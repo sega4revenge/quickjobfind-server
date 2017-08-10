@@ -42,13 +42,13 @@ module.exports = router => {
     router.post('/productdetail', (req, res) => {
         const productid = req.body.productid;
 
-
+        console.log(productid);
         if (!productid) {
 
             res.status(400).json({message: 'Invalid Request !'});
 
         } else {
-
+            console.log(productid);
             fun_product.getproductdetail(productid)
 
                 .then(result => {
