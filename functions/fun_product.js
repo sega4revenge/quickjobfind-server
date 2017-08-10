@@ -92,7 +92,10 @@ exports.productdetail = () =>
 
     new Promise((resolve, reject) => {
 
-        product.find({type: "1"})
+        let ObjectId;
+        ObjectId = require('mongodb').ObjectID;
+
+        product.find({_id: ObjectId(productid)})
             .populate('iduser')
             .then(products => {
 
@@ -102,7 +105,7 @@ exports.productdetail = () =>
 
                 } else {
 
-                    return products;
+                    return products[0];
 
                 }
             })
@@ -110,7 +113,7 @@ exports.productdetail = () =>
             .then(product => {
 
 
-                resolve({status: 200, listproduct: product});
+                resolve({status: 200, product: product});
 
             })
 
