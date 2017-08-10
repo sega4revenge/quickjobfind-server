@@ -116,7 +116,7 @@ exports.getproductdetail = (productid) =>
 
             })
 
-            .catch(err => reject({ status: 500, message: 'Internal Server Error !' }));
+            .catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 
     });
 
@@ -129,17 +129,17 @@ exports.uploadproduct = (productid, image) =>
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
 
-        product.find({ _id : ObjectId(productid)})
-            .populate('iduser')
-            .then(products => {
+                           product.find({ _id : ObjectId(productid)})
+                        .populate('iduser')
+                        .then(products => {
 
-                if (products.length === 0) {
+                            if (products.length === 0) {
 
-                    reject({ status: 404, message: 'User Not Found !' });
+                                reject({ status: 404, message: 'User Not Found !' });
 
-                } else {
+                            } else {
 
-                    return products[0];
+                                return products[0];
 
                 }
             })
