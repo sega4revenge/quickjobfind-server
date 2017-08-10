@@ -111,7 +111,7 @@ exports.getproductdetail = (productid) =>
             .then(product => {
 
 
-                resolve({ status: 200, listproduct : product });
+                resolve({ status: 200, product : product });
 
             })
 

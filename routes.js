@@ -39,6 +39,27 @@ module.exports = router => {
     router.get('/sendsms', (req, res) => {
       sms.sendsms("0906448076","abc","","",1)
     });
+    router.post('/productdetail', (req, res) => {
+        const productid = req.body.productid;
+
+
+        if (!productid) {
+
+            res.status(400).json({message: 'Invalid Request !'});
+
+        } else {
+
+            fun_product.getproductdetail(productid)
+
+                .then(result => {
+
+                    res.setHeader('Location', '/product/' + userid);
+                    res.status(result.status).json({message: result.message, product: result.product})
+                })
+
+                .catch(err => res.status(err.status).json({message: err.message}));
+        }
+    });
     router.post('/authenticate', (req, res) => {
 
 
