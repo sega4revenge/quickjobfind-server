@@ -88,33 +88,33 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
             });
     });
 
-exports.getproductdetail = (productid) =>
+exports.productdetail = (productid) =>
 
     new Promise((resolve, reject) => {
-        console.log(productid);
 
-        let ObjectId;
-        ObjectId = require('mongodb').ObjectID;
-
-        product.find({_id: ObjectId(productid)})
+        product.find({type: "1"})
             .populate('iduser')
             .then(products => {
 
                 if (products.length === 0) {
 
-                    reject({status: 404, message: 'User Not Found !'});
+                    reject({status: 404, message: 'Product Not Found !'});
 
                 } else {
 
-                    return products[0];
+                    return products;
 
                 }
             })
 
             .then(product => {
-                resolve({status: 200, product: product});
+
+
+                resolve({status: 200, listproduct: product});
+
             })
-            .catch(err => reject({status: 500, message: 'Internal Server Error !'}))
+
+            .catch(err => reject({status: 500, message: 'Internal Server Error !'}));
 
     });
 
