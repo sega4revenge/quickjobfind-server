@@ -53,7 +53,6 @@ module.exports = router => {
 
                 .then(result => {
 
-                    res.setHeader('Location', '/product/' + userid);
                     res.status(result.status).json({message: result.message, product: result.product})
                 })
 
