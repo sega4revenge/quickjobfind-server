@@ -50,11 +50,11 @@ module.exports = router => {
         } else {
             console.log(productid);
             fun_product.productdetail(productid)
-
-                .then(result => {
+                .then(result => res.json(result))
+              /*  .then(result => {
 
                     res.status(result.status).json({message: result.message, product: result.product})
-                })
+                })*/
 
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
