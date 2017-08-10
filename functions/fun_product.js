@@ -92,6 +92,7 @@ exports.getproductdetail = (productid) =>
 
     new Promise((resolve,reject) => {
         let ObjectId;
+        Console.log(productid)
         ObjectId = require('mongodb').ObjectID;
         product.find({_id: ObjectId(productid)})
             .populate('iduser')
