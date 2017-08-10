@@ -49,7 +49,7 @@ module.exports = router => {
 
         } else {
             console.log(productid);
-            fun_product.getproductdetail(productid)
+            fun_product.productdetail(productid)
 
                 .then(result => {
 

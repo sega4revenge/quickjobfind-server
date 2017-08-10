@@ -88,7 +88,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
             });
     });
 
-exports.productdetail = (productid) =>
+exports.productdetail = () =>
 
     new Promise((resolve, reject) => {
 
