@@ -104,7 +104,7 @@ exports.getproductdetail = (productid) =>
 
                 } else {
 
-                    return products[0];
+                    return products;
 
                 }
             })
