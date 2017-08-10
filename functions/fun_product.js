@@ -94,7 +94,7 @@ exports.getproductdetail = (productid) =>
         let ObjectId;
         console.log(productid);
         ObjectId = require('mongodb').ObjectID;
-        product.find({_id: ObjectId(productid)})
+        product.find({})
             .populate('iduser')
             .then(products => {
 
@@ -104,7 +104,7 @@ exports.getproductdetail = (productid) =>
 
                 } else {
 
-                    return products;
+                    return products[0];
 
                 }
             })
