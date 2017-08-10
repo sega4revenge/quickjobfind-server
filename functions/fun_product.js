@@ -8,7 +8,7 @@ exports.allproduct = () =>
     new Promise((resolve, reject) => {
 
         product.find({type: "1"})
-            .populate('iduser')
+            .populate('user')
             .then(products => {
 
                 if (products.length === 0) {
@@ -43,7 +43,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
         if (type === 1) {
             console.log(price);
             newproduct = new product({
-                iduser: userid,
+                user: userid,
                 productname: prodctname,
                 price: price,
                 number: number,
@@ -53,7 +53,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
         } else {
             console.log(price);
             newproduct = new product({
-                iduser: userid,
+                user: userid,
                 productname: prodctname,
                 price: "",
                 number: number,
@@ -67,7 +67,7 @@ exports.createproduct = (userid, prodctname, price, number, description, type) =
 
 
             .then(() => {
-                newproduct.populate('iduser', '_id name email images', function (err) {
+                newproduct.populate('user', '_id name email images', function (err) {
                     resolve({status: 201, message: 'product Registered Sucessfully !', product: newproduct})
                 });
             })
@@ -96,7 +96,7 @@ exports.productdetail = (productid) =>
         ObjectId = require('mongodb').ObjectID;
 
         product.find({_id: ObjectId(productid)})
-            .populate('iduser')
+            .populate('user')
             .then(products => {
 
                 if (products.length === 0) {
@@ -131,7 +131,7 @@ exports.uploadproduct = (productid, image) =>
         ObjectId = require('mongodb').ObjectID;
 
         product.find({_id: ObjectId(productid)})
-            .populate('iduser')
+            .populate('user')
             .then(products => {
 
                 if (products.length === 0) {

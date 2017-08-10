@@ -135,7 +135,7 @@ module.exports = router => {
         }
     });
     router.post('/createproduct', (req, res) => {
-        const userid = req.body.userid;
+        const userid = req.body.user;
         const productname = req.body.productname;
         const price = req.body.price;
         const number = req.body.number;
@@ -172,7 +172,7 @@ module.exports = router => {
 
     });
 
-    router.put('/users/:id', (req, res) => {
+    router.post('/users/:id', (req, res) => {
 
         if (checkToken(req)) {
 
@@ -244,7 +244,7 @@ module.exports = router => {
             if (err) return res.status(500).json({error: err});
             console.log(files.image.path.substring(8));
             fun_product.uploadproduct(fields.productid, files.image.path.substring(8));
-            res.status(200).json({uploaded: true, name: fields.iduser})
+            res.status(200).json({uploaded: true, name: fields.user})
         });
         form.on('fileBegin', function (name, file) {
             const [fileName, fileExt] = file.name.split('.');
