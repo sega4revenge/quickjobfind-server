@@ -1,14 +1,12 @@
 'use strict';
 
-const auth = require('basic-auth');
+
 const jwt = require('jsonwebtoken');
-const multipart = require('multiparty');
 const register = require('./functions/register');
 const login = require('./functions/login');
 const sms = require('./functions/speedsms');
-const allproduct = require('./functions/allproduct');
 const profile = require('./functions/profile');
-const uploadproduct = require('./functions/uploadproduct');
+const fun_product = require('./functions/fun_product');
 const fs = require('fs'),
     url = require('url');
 const password = require('./functions/password');
@@ -16,7 +14,8 @@ const config = require('./config/config.json');
 const formidable = require('formidable');
 const path = require('path');
 const uploadDir = path.join('./uploads/');
-const createproduct = require('./functions/createproduct');
+
+
 module.exports = router => {
 
     router.get('/', (req, res) => {
@@ -80,7 +79,7 @@ module.exports = router => {
         //
         // } else {
 
-            allproduct.allproduct()
+            fun_product.allproduct()
                 // .then(result => res.json(result))
 
                 .then(result => res.json(result))
@@ -129,7 +128,7 @@ module.exports = router => {
 
         } else {
 
-            createproduct.createproduct(userid, productname, price, number, description, type)
+            fun_product.createproduct(userid, productname, price, number, description, type)
 
                 .then(result => {
 
@@ -224,7 +223,7 @@ module.exports = router => {
         form.parse(req, (err, fields, files) => {
             if (err) return res.status(500).json({error: err});
             console.log(files.image.path.substring(8));
-            uploadproduct.uploadproduct(fields.productid, files.image.path.substring(8));
+            fun_product.uploadproduct(fields.productid, files.image.path.substring(8));
             res.status(200).json({uploaded: true, name: fields.iduser})
         });
         form.on('fileBegin', function (name, file) {

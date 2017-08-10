@@ -1,10 +1,10 @@
 'use strict';
  
-const user = require('../models/user');
-const bcrypt = require('bcryptjs');
-const nodemailer = require('nodemailer');
-const randomstring = require("randomstring");
-const config = require('../config/config.json');
+const user = new require('../models/user');
+const bcrypt = new require('bcryptjs');
+const nodemailer = new require('nodemailer');
+const randomstring = new require("randomstring");
+const config = new require('../config/config.json');
  
 exports.changePassword = (email, password, newPassword) =>
  
@@ -20,9 +20,7 @@ exports.changePassword = (email, password, newPassword) =>
             if (bcrypt.compareSync(password, hashed_password)) {
  
                 const salt = bcrypt.genSaltSync(10);
-                const hash = bcrypt.hashSync(newPassword, salt);
- 
-                user.hashed_password = hash;
+                user.hashed_password = bcrypt.hashSync(newPassword, salt);
  
                 return user.save();
  
@@ -48,7 +46,7 @@ exports.resetPasswordInit = email =>
  
         .then(users => {
  
-            if (users.length == 0) {
+            if (users.length === 0) {
  
                 reject({ status: 404, message: 'User Not Found !' });
  
@@ -123,8 +121,7 @@ exports.resetPasswordFinish = (email, token, password) =>
             if (bcrypt.compareSync(token, user.temp_password)) {
  
                 const salt = bcrypt.genSaltSync(10);
-                const hash = bcrypt.hashSync(password, salt);
-                user.hashed_password = hash;
+                user.hashed_password = bcrypt.hashSync(password, salt);
                 user.temp_password = undefined;
                 user.temp_password_time = undefined;
  
