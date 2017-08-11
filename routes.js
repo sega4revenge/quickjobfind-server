@@ -24,7 +24,7 @@ module.exports = router => {
         pic = query.image;
 
         //read the image using fs and send the image content back in the response
-        fs.readFile('./opt/app/uploads/' + pic, function (err, content) {
+        fs.readFile('/opt/app/uploads/' + pic, function (err, content) {
             if (err) {
                 res.writeHead(400, {'Content-type': 'text/html'});
                 console.log(err);
