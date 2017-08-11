@@ -52,7 +52,7 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				category: category,
 				address: address,
 				description: description,
-				timeStamp: timestamp,
+				created_at: timestamp,
 				type: type
 			});
 		} else {
@@ -66,7 +66,7 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				category: category,
 				address: address,
 				description: description,
-				timeStamp: timestamp,
+				created_at: timestamp,
 				type: type
 			});
 		}
