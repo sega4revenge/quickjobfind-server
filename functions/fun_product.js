@@ -34,7 +34,7 @@ new Promise((resolve, reject) => {
 
 });
 
-exports.createproduct = (userid, prodctname, price, time, number, category, address, description, type) =>
+exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>
 
 	new Promise((resolve, reject) => {
 
@@ -52,6 +52,7 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				category: category,
 				address: address,
 				description: description,
+				timeStamp: timestamp,
 				type: type
 			});
 		} else {
@@ -65,6 +66,7 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				category: category,
 				address: address,
 				description: description,
+				timeStamp: timestamp,
 				type: type
 			});
 		}

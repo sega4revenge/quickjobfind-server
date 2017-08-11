@@ -16,6 +16,7 @@ const productSchema = mongoose.Schema({
     address             : String,
     type                : String,
     time : String,
+    created_at          : String,
     images: [String]
 });
 

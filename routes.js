@@ -145,13 +145,15 @@ module.exports = router => {
 		const description = req.body.description;
         const type = req.body.type;
 
+		const day = new Date();
+		const timestamp = day.getTime();
         if (!userid) {
 
             res.status(400).json({message: 'Invalid Request !'});
 
         } else {
 
-            fun_product.createproduct(userid, productname, price, time, number, category, address,  description, type)
+            fun_product.createproduct(userid, productname, price, time, number, category, address,  description, timestamp, type)
 
                 .then(result => {
 
