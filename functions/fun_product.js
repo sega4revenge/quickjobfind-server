@@ -1,38 +1,40 @@
-'use strict';
+"use strict";
 
 const product = new require("../models/product");
 
 exports.allproduct = () =>
 
-	new Promise((resolve, reject) => {
+new Promise((resolve, reject) => {
+	const d = new Date();
+	const timeStamp = d.getTime();
+	console.log(timeStamp);
+	product.find({type: "1"})
+		.populate("user")
+		.then(products => {
 
-		product.find({type: "1"})
-			.populate("user")
-			.then(products => {
+			if (products.length === 0) {
 
-				if (products.length === 0) {
+				reject({status: 404, message: "Product Not Found !"});
 
-					reject({status: 404, message: "Product Not Found !"});
+			} else {
 
-				} else {
+				return products;
 
-					return products;
+			}
+		})
 
-				}
-			})
-
-			.then(product => {
+		.then(product => {
 
 
-				resolve({status: 200, listproduct: product});
+			resolve({status: 200, listproduct: product});
 
-			})
+		})
 
-			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+		.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
-	});
+});
 
-exports.createproduct = (userid, prodctname, price, time,  number, category, address, description, type) =>
+exports.createproduct = (userid, prodctname, price, time, number, category, address, description, type) =>
 
 	new Promise((resolve, reject) => {
 
