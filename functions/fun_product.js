@@ -7,7 +7,7 @@ exports.allproduct = () =>
 new Promise((resolve, reject) => {
 	const d = new Date();
 	const timeStamp = d.getTime();
-	console.log(timeStamp);
+	console.log("TIMESTAMP: " + timeStamp);
 	product.find({type: "1"})
 		.populate("user")
 		.then(products => {
