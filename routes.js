@@ -135,7 +135,7 @@ module.exports = router => {
         }
     });
     router.post('/createproduct', (req, res) => {
-        const userid = req.body.user;
+        const userid = req.body.userid;
         const productname = req.body.productname;
         const price = req.body.price;
 		const time = req.body.time;
