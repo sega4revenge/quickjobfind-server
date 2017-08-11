@@ -141,6 +141,7 @@ module.exports = router => {
 		const time = req.body.time;
 		const number = req.body.number;
 		const category = req.body.category;
+		const address = req.body.address;
 		const description = req.body.description;
         const type = req.body.type;
 
@@ -150,7 +151,7 @@ module.exports = router => {
 
         } else {
 
-            fun_product.createproduct(userid, productname, price, time, number, category, description, type)
+            fun_product.createproduct(userid, productname, price, time, number, category, address,  description, type)
 
                 .then(result => {
 
