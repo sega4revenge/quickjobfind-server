@@ -163,6 +163,28 @@ module.exports = router => {
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
     });
+	router.post('/addcomment', (req, res) => {
+		const userid = req.body.userid;
+		const productid = req.body.productid;
+		const content = req.body.content;
+		const day = new Date();
+		const timestamp = day.getTime();
+		if (!userid) {
+
+			res.status(400).json({message: 'Invalid Request !'});
+
+		} else {
+
+			fun_product.addcomment(userid, productid,content, timestamp)
+
+				.then(result => {
+
+					res.status(result.status).json({message: result.message,comment: result.comment})
+				})
+
+				.catch(err => res.status(err.status).json({message: err.message}));
+		}
+	});
     router.get('/data/:id', (req, res) => {
 
 

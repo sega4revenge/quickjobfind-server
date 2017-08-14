@@ -15,8 +15,8 @@
 
 //     });
 'use strict';
-const product = require('../models/product');
-const user = require('../models/user');
+const product = new require('../models/product');
+const user = new require('../models/user');
 
 /*
 exports.getProfile = userid =>
