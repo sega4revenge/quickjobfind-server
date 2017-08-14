@@ -125,7 +125,7 @@ exports.addcomment = (userid, productid, content, time) =>
 
 				if (err.code === 11000) {
 
-
+					product.update({ _id: id }, { $set: { size: 'large' }}, callback);
 					reject({status: 409, message: "Comment Already Registered !"});
 
 				} else {
