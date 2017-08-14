@@ -117,6 +117,14 @@ exports.addcomment = (userid, productid, content, time) =>
 
 			.then(() => {
 
+				product.findByIdAndUpdate(
+					productid,
+					{$push: {"comment": newcomment._id}},
+					{safe: true, upsert: true, new : true},
+					function(err, model) {
+						console.log(err);
+					}
+				);
 
 				resolve({status: 201, message: "Comment Sucessfully !", comment: newcomment});
 			})
@@ -124,14 +132,7 @@ exports.addcomment = (userid, productid, content, time) =>
 			.catch(err => {
 
 				if (err.code === 11000) {
-					product.findByIdAndUpdate(
-						productid,
-						{$push: {"comment": newcomment._id}},
-						{safe: true, upsert: true, new : true},
-						function(err, model) {
-							console.log(err);
-						}
-					);
+
 					reject({status: 409, message: "Comment Already Registered !"});
 
 				} else {
