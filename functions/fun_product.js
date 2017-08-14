@@ -145,7 +145,7 @@ exports.productdetail = (productid) =>
 		ObjectId = require("mongodb").ObjectID;
 
 		product.find({_id: ObjectId(productid)})
-			.populate("user")
+			.populate("user comment")
 			.then(products => {
 
 				if (products.length === 0) {
