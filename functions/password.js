@@ -117,7 +117,7 @@ exports.resetPasswordFinish = (email, password) =>
  
             if (seconds < 60) { return user; } else { reject({ status: 401, message: 'Time Out ! Try again' }); } }) .then(user => {
  
-            if (bcrypt.compareSync(token, user.temp_password)) {
+            if (bcrypt.compareSync(user.temp_password)) {
  
                 const salt = bcrypt.genSaltSync(10);
                 user.hashed_password = bcrypt.hashSync(password, salt);
