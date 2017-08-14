@@ -218,7 +218,7 @@ module.exports = router => {
         const email = req.params.id;
         const newPassword = req.body.password;
 
-        if (!!newPassword || !newPassword.trim()) {
+        if (!newPassword) {
 
             password.resetPasswordInit(email)
 
