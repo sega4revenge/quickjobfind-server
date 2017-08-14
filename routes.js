@@ -15,7 +15,6 @@ const formidable = require('formidable');
 const path = require('path');
 const uploadDir = path.join('./uploads/');
 
-
 module.exports = router => {
 
     router.get('/', (req, res) => {
@@ -176,8 +175,7 @@ module.exports = router => {
 
 
     });
-
-    router.post('/users/:id', (req, res) => {
+	router.post('/users/:id', (req, res) => {
 
         if (checkToken(req)) {
 
@@ -218,10 +216,9 @@ module.exports = router => {
     router.post('/users/:id/password', (req, res) => {
 
         const email = req.params.id;
-        const token = req.body.token;
         const newPassword = req.body.password;
 
-        if (!token || !newPassword || !token.trim() || !newPassword.trim()) {
+        if (!!newPassword || !newPassword.trim()) {
 
             password.resetPasswordInit(email)
 
@@ -231,7 +228,7 @@ module.exports = router => {
 
         } else {
 
-            password.resetPasswordFinish(email, token, newPassword)
+            password.resetPasswordFinish(email, newPassword)
 
                 .then(result => res.status(result.status).json({message: result.message}))
 
