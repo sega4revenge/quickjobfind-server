@@ -76,7 +76,7 @@ exports.resetPasswordInit = email =>
                 html: `Hello ${user.name},
  
                      Your reset password token is <b>${random}</b>.  
-                The token is valid for only 2 minutes.
+                The token is valid for only 5 minutes.
  
                 Thanks,
                 Sega Gò Vấp.`
@@ -101,7 +101,7 @@ exports.resetPasswordInit = email =>
         });
     });
  
-exports.resetPasswordFinish = (email, token, password) => 
+exports.resetPasswordFinish = (email, password) =>
  
     new Promise((resolve, reject) => {
  
@@ -115,7 +115,7 @@ exports.resetPasswordFinish = (email, token, password) =>
             const seconds = Math.floor(diff / 1000);
             console.log(`Seconds : ${seconds}`);
  
-            if (seconds < 120) { return user; } else { reject({ status: 401, message: 'Time Out ! Try again' }); } }) .then(user => {
+            if (seconds < 60) { return user; } else { reject({ status: 401, message: 'Time Out ! Try again' }); } }) .then(user => {
  
             if (bcrypt.compareSync(token, user.temp_password)) {
  

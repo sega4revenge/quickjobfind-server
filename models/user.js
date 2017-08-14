@@ -12,6 +12,7 @@ const userSchema = mongoose.Schema({
     photoprofile : String,
     tokenfirebase : String,
 	temp_password : String,
+	temp_password_time : String,
     facebook :{
         id : String,
         token : String,
