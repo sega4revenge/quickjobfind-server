@@ -1,7 +1,7 @@
 'use strict';
 
-const user = require('../models/user');
-const bcrypt = require('bcryptjs');
+const user = new require('../models/user');
+const bcrypt = new require('bcryptjs');
 
 exports.registerUser = (id, token, name, email, password, photoprofile, type, tokenfirebase) =>
 

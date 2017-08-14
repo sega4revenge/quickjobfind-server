@@ -1,38 +1,38 @@
 "use strict";
 
 const product = new require("../models/product");
-
+const comment = new require("../models/comment");
 exports.allproduct = () =>
 
-new Promise((resolve, reject) => {
-	const d = new Date();
-	const timeStamp = d.getTime();
-	console.log("TIMESTAMP: " + timeStamp);
-	product.find({type: "1"})
-		.populate("user")
-		.then(products => {
+	new Promise((resolve, reject) => {
+		const d = new Date();
+		const timeStamp = d.getTime();
+		console.log("TIMESTAMP: " + timeStamp);
+		product.find({type: "1"})
+			.populate("user")
+			.then(products => {
 
-			if (products.length === 0) {
+				if (products.length === 0) {
 
-				reject({status: 404, message: "Product Not Found !"});
+					reject({status: 404, message: "Product Not Found !"});
 
-			} else {
+				} else {
 
-				return products;
+					return products;
 
-			}
-		})
+				}
+			})
 
-		.then(product => {
+			.then(product => {
 
 
-			resolve({status: 200, listproduct: product});
+				resolve({status: 200, listproduct: product});
 
-		})
+			})
 
-		.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
-});
+	});
 
 exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>
 
@@ -96,6 +96,46 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				}
 			});
 	});
+
+
+exports.addcomment = (userid, productid, content, time) =>
+
+	new Promise((resolve, reject) => {
+
+		let newcomment;
+
+
+		newcomment = new comment({
+			userid: userid,
+			productid: productid,
+			content: content,
+			time: time
+		});
+
+		newcomment.save()
+
+
+			.then(() => {
+
+
+				resolve({status: 201, message: "Comment Sucessfully !", comment: newcomment});
+			})
+
+			.catch(err => {
+
+				if (err.code === 11000) {
+
+
+					reject({status: 409, message: "Comment Already Registered !"});
+
+				} else {
+					reject({status: 500, message: "Internal Server Error !"});
+					throw err;
+
+				}
+			});
+	});
+
 
 exports.productdetail = (productid) =>
 
