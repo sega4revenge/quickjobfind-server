@@ -175,7 +175,7 @@ module.exports = router => {
 
 		} else {
 
-			fun_product.addcomment(userid, productid, timestamp, content)
+			fun_product.addcomment(userid, productid,content, timestamp)
 
 				.then(result => {
 
