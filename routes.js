@@ -235,7 +235,28 @@ module.exports = router => {
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
     });
+	router.post('/forgotpassword', (req, res) => {
 
+		const email = req.body.email;
+		const newPassword = req.body.password;
+
+		if (!newPassword) {
+
+			password.resetPasswordInit(email)
+
+				.then(result => res.status(result.status).json({message: result.message}))
+
+				.catch(err => res.status(err.status).json({message: err.message}));
+
+		} else {
+
+			password.resetPasswordFinish(email, newPassword)
+
+				.then(result => res.status(result.status).json({message: result.message}))
+
+				.catch(err => res.status(err.status).json({message: err.message}));
+		}
+	});
 
     function uploadMedia(req, res) { // This is just for my Controller same as app.post(url, function(req,res,next) {....
         const form = new formidable.IncomingForm();
