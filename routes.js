@@ -263,7 +263,6 @@ module.exports = router => {
 		const newPassword = req.body.password;
 
 		if (!newPassword) {
-
 			password.resetPasswordInit(email)
 
 				.then(result => res.status(result.status).json({message: result.message}))
