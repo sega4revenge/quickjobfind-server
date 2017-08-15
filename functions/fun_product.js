@@ -155,7 +155,7 @@ exports.productdetail = (productid) =>
 			.populate({
 				path: "user comment",
 				// Get friends of friends - populate the 'friends' array for every friend
-				populate: {path: "userid"}
+				populate: {path: "userid", select:  '_id name photoprofile'}
 			})
 			.then(products => {
 
