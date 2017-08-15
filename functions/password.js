@@ -127,7 +127,7 @@ exports.resetPasswordFinish = (email, code, newPassword) =>
  
             } else {
  
-                reject({ status: 401, message: 'Invalid Token !' });
+                reject({ status: 401, message: 'Invalid Code !' });
             }
         })
  
