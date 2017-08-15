@@ -8,7 +8,7 @@ exports.allproduct = () =>
 		const d = new Date();
 		const timeStamp = d.getTime();
 		console.log("TIMESTAMP: " + timeStamp);
-		product.find({type: "1"})
+		product.find({type: "1"}, {  comment: 0 })
 			.populate("user")
 			.then(products => {
 
