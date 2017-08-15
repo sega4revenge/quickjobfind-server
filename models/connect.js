@@ -1,4 +1,4 @@
- xd4zs/**
+/**
  * Created by Sega on 29/03/2017.
  */
 'use strict';
