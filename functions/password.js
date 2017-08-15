@@ -100,7 +100,7 @@ exports.resetPasswordInit = email =>
         });
     });
  
-exports.resetPasswordFinish = (email, password) =>
+exports.resetPasswordFinish = (email, code, newPassword) =>
     new Promise((resolve, reject) => {
 		console.log("Finish");
 
@@ -116,10 +116,10 @@ exports.resetPasswordFinish = (email, password) =>
  
             if (seconds < 60) { return user; } else { reject({ status: 401, message: 'Time Out ! Try again' }); } }) .then(user => {
  
-            if (bcrypt.compareSync(user.temp_password)) {
+            if (bcrypt.compareSync(code, user.temp_password)) {
  
                 const salt = bcrypt.genSaltSync(10);
-                user.hashed_password = bcrypt.hashSync(password, salt);
+				user.hashed_password = bcrypt.hashSync(newPassword, salt);
                 user.temp_password = undefined;
                 user.temp_password_time = undefined;
  

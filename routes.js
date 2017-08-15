@@ -260,6 +260,7 @@ module.exports = router => {
 	router.post('/forgotpassword', (req, res) => {
 
 		const email = req.body.email;
+		const code = req.body.code
 		const newPassword = req.body.password;
 
 		if (!newPassword) {
@@ -271,7 +272,7 @@ module.exports = router => {
 
 		} else {
 
-			password.resetPasswordFinish(email, newPassword)
+			password.resetPasswordFinish(email, code, newPassword)
 
 				.then(result => res.status(result.status).json({message: result.message}))
 
