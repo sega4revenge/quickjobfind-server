@@ -120,8 +120,8 @@ exports.addcomment = (userid, productid, content, time) =>
 				product.findByIdAndUpdate(
 					productid,
 					{$push: {"comment": newcomment._id}},
-					{safe: true, upsert: true, new : true},
-					function(err, model) {
+					{safe: true, upsert: true, new: true},
+					function (err, model) {
 						console.log(err);
 					}
 				);
@@ -152,7 +152,11 @@ exports.productdetail = (productid) =>
 		ObjectId = require("mongodb").ObjectID;
 
 		product.find({_id: ObjectId(productid)})
-			.populate("user comment")
+			.populate({
+				path: "user comment",
+				// Get friends of friends - populate the 'friends' array for every friend
+				populate: {path: "user"}
+			})
 			.then(products => {
 
 				if (products.length === 0) {
