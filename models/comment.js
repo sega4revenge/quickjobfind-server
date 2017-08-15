@@ -6,7 +6,7 @@ const Schema = require("mongoose/lib/schema");
 
 
 const commentSchema = mongoose.Schema({
-    userid             : {type: Schema.Types.ObjectId, ref: 'user'},
+    user            : {type: Schema.Types.ObjectId, ref: 'user'},
     productid           : {type: Schema.Types.ObjectId, ref: 'product'},
     content             : String,
     time                : String
