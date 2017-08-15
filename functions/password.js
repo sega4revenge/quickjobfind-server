@@ -37,10 +37,9 @@ exports.changePassword = (email, password, newPassword) =>
     });
  
 exports.resetPasswordInit = email =>
-    console.log("Init");
     new Promise((resolve, reject) => {
- 
-        const random = randomstring.generate(8);
+		console.log("Init");
+		const random = randomstring.generate(8);
  
         user.find({ email: email })
  
@@ -102,10 +101,10 @@ exports.resetPasswordInit = email =>
     });
  
 exports.resetPasswordFinish = (email, password) =>
-	console.log("Finish");
     new Promise((resolve, reject) => {
- 
-        user.find({ email: email })
+		console.log("Finish");
+
+		user.find({ email: email })
  
         .then(users => {
  
