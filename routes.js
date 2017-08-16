@@ -4,6 +4,7 @@
 const jwt = require('jsonwebtoken');
 const register = require('./functions/register');
 const login = require('./functions/login');
+const search = require('./functions/search');
 const sms = require('./functions/speedsms');
 const profile = require('./functions/profile');
 const fun_product = require('./functions/fun_product');
@@ -38,6 +39,27 @@ module.exports = router => {
     router.get('/sendsms', (req, res) => {
       sms.sendsms("0906448076","abc","","",1)
     });
+	router.post('/search', (req, res) => {
+		const keysearch = req.body.keysearch;
+		const category = req.body.category;
+		const location = req.body.location;
+		const typeArrange = req.body.typeArrange;
+		console.log("keysearch = " + keysearch);
+		console.log("category = " + category);
+		console.log("location = " + location);
+		console.log("typeArrange = " + typeArrange);
+
+		// if (category.empty()) {
+		//
+		// 	res.status(400).json({message: 'Invalid Request !'});
+		//
+		// } else {
+		search.mSearch(keysearch,location, category,typeArrange)
+			.then(result => res.json(result))
+
+			.catch(err => res.status(err.status).json({message: err.message}));
+	//	}
+	});
     router.post('/productdetail', (req, res) => {
         const productid = req.body.productid;
 
