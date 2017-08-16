@@ -9,6 +9,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 
 		product.find({
 			productname:  /^.*\$searchkey.*$/i,
+			location: 	/^.*\$location.*$/i,
 			type: "1"
 		})
 			.populate("user")
