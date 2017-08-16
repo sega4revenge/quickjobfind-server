@@ -7,18 +7,23 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 
 	new Promise((resolve,reject) => {
 
-		product.find({type: "1"})
+		product.find({type: "1"}, {  comment: 0 })
+			.populate("user")
+			.then(products => {
 
-		//product.find({})//, "location": /^.*\$location.*$/i , "category": /^.*\$category.*$/i
+				if (products.length === 0) {
 
-			.then(product => {
-
-				if (product.length === 0) {
-
-					reject({ status: 404, message: 'User Not Found !' });
+					reject({status: 404, message: "Product Not Found !"});
 
 				} else {
-					return product;
+
+					return products;
+
 				}
 			})
+			.then(product => {
+				resolve({status: 200, listproduct: product});
+
+			})
+			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 	});
