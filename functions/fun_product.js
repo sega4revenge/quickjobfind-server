@@ -106,7 +106,7 @@ exports.addcomment = (userid, productid, content, time) =>
 
 
 		newcomment = new comment({
-			userid: userid,
+			user: userid,
 			productid: productid,
 			content: content,
 			time: time
