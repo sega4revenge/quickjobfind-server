@@ -7,7 +7,10 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 
 	new Promise((resolve,reject) => {
 
-		product.find({type: "1"}, {  comment: 0 })
+		product.find({
+			productname:  /^.*\$searchkey.*$/i,
+			type: "1"
+		})
 			.populate("user")
 			.then(products => {
 
