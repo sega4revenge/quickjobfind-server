@@ -48,17 +48,11 @@ module.exports = router => {
 		console.log("category = " + category);
 		console.log("location = " + location);
 		console.log("typeArrange = " + typeArrange);
-
-		// if (category.empty()) {
-		//
-		// 	res.status(400).json({message: 'Invalid Request !'});
-		//
-		// } else {
 		search.mSearch(keysearch,location, category,typeArrange)
 			.then(result => res.json(result))
 
 			.catch(err => res.status(err.status).json({message: err.message}));
-	//	}
+
 	});
     router.post('/productdetail', (req, res) => {
         const productid = req.body.productid;
