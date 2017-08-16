@@ -7,7 +7,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 
 	new Promise((resolve,reject) => {
 
-		product.find({ "productname": "" })//, "location": /^.*\$location.*$/i , "category": /^.*\$category.*$/i
+		product.find({ })//, "location": /^.*\$location.*$/i , "category": /^.*\$category.*$/i
 
 			.then(product => {
 
