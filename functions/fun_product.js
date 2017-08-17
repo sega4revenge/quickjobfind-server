@@ -123,7 +123,7 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
-				comment.find({productid: productid})
+				comment.find({productid: ObjectId(productid)})
 					.populate({
 						path: "user",
 
