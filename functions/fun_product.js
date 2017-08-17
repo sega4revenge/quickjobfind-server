@@ -129,38 +129,38 @@ exports.addcomment = (userid, productid, content, time) =>
 
 						// Get friends of friends - populate the 'friends' array for every friend
 						select: "_id name photoprofile"
+
+					})
+					.then(comments => {
+
+						if (products.length === 0) {
+
+							reject({status: 404, message: "Product Not Found !"});
+
+						} else {
+
+							return comments[0];
+
+						}
 					});
+
+				resolve({status: 201, message: "Comment Sucessfully !", comment: comments[0]});
 			})
-			.then(comments => {
 
-				if (products.length === 0) {
+			.catch(err => {
 
-					reject({status: 404, message: "Product Not Found !"});
+				if (err.code === 11000) {
+
+					reject({status: 409, message: "Comment Already Registered !"});
 
 				} else {
-
-					return comments[0];
+					reject({status: 500, message: "Internal Server Error !"});
+					throw err;
 
 				}
 			});
-
-		resolve({status: 201, message: "Comment Sucessfully !", comment: comments[0]});
 	})
-
-		.catch(err => {
-
-			if (err.code === 11000) {
-
-				reject({status: 409, message: "Comment Already Registered !"});
-
-			} else {
-				reject({status: 500, message: "Internal Server Error !"});
-				throw err;
-
-			}
-		});
-
-
+;
 
 
 exports.productdetail = (productid) =>
