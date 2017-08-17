@@ -13,7 +13,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 		if(typeArrange==1)
 		{
 		}
-		product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({created_at: 1})
+		product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({created_at: -1})
 
 		//.find({ ,
 		//	productname:  /^.*\$searchkey.*$/i,
