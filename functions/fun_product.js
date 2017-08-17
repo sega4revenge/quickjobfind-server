@@ -186,7 +186,7 @@ exports.allcomment = (productid) =>
 		let ObjectId;
 		ObjectId = require("mongodb").ObjectID;
 
-		product.find({_id: ObjectId(productid),select : 'comment'})
+		product.find({_id: ObjectId(productid)})
 			.populate({
 				path: "comment"
 			})
