@@ -123,6 +123,8 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
+				let ObjectId;
+				ObjectId = require("mongodb").ObjectID;
 				comment.find({productid: ObjectId(productid)})
 					.then(comments => {
 
