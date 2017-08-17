@@ -126,7 +126,7 @@ exports.addcomment = (userid, productid, content, time) =>
 				let ObjectId;
 				ObjectId = require("mongodb").ObjectID;
 				comment.find({productid: ObjectId(productid)})
-					.populate("user", "_id name email" )
+					.populate("user", "_id name photoprofile" )
 					.then(comments => {
 
 						if (comments.length === 0) {
