@@ -8,7 +8,7 @@ exports.allproduct = () =>
 		const d = new Date();
 		const timeStamp = d.getTime();
 		console.log("TIMESTAMP: " + timeStamp);
-		product.find({type: "1"}, {  comment: 0 })
+		product.find({type: "1"}, {comment: 0})
 			.populate("user")
 			.then(products => {
 
@@ -123,23 +123,44 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
+				comment.find({productid: productid})
+					.populate({
+						path: "user",
 
-				resolve({status: 201, message: "Comment Sucessfully !", comment: newcomment});
+						// Get friends of friends - populate the 'friends' array for every friend
+						select: "_id name photoprofile"
+					});
 			})
+			.then(comments => {
 
-			.catch(err => {
+				if (products.length === 0) {
 
-				if (err.code === 11000) {
-
-					reject({status: 409, message: "Comment Already Registered !"});
+					reject({status: 404, message: "Product Not Found !"});
 
 				} else {
-					reject({status: 500, message: "Internal Server Error !"});
-					throw err;
+
+					return comments[0];
 
 				}
 			});
-	});
+
+		resolve({status: 201, message: "Comment Sucessfully !", comment: comments[0]});
+	})
+
+		.catch(err => {
+
+			if (err.code === 11000) {
+
+				reject({status: 409, message: "Comment Already Registered !"});
+
+			} else {
+				reject({status: 500, message: "Internal Server Error !"});
+				throw err;
+
+			}
+		});
+
+
 
 
 exports.productdetail = (productid) =>
@@ -154,7 +175,7 @@ exports.productdetail = (productid) =>
 				path: "user comment",
 
 				// Get friends of friends - populate the 'friends' array for every friend
-				populate: {path: "user", select:  '_id name photoprofile'}
+				populate: {path: "user", select: "_id name photoprofile"}
 			})
 			.then(products => {
 
@@ -187,11 +208,11 @@ exports.allcomment = (productid) =>
 		let ObjectId;
 		ObjectId = require("mongodb").ObjectID;
 
-		product.find({_id: ObjectId(productid)},{comment : 1})
+		product.find({_id: ObjectId(productid)}, {comment: 1})
 			.populate({
 				path: "user comment",
 				// Get friends of friends - populate the 'friends' array for every friend
-				populate: {path: "user", select:  '_id name photoprofile'}
+				populate: {path: "user", select: "_id name photoprofile"}
 			})
 			.then(products => {
 
