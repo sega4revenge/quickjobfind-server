@@ -49,7 +49,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 					}
 				})
 				.then(product => {
-					resolve({status: 200, listproduct: product});
+					resolve({status: 200,message: "123123 !" });//listproduct: product
 
 				})
 				.catch(err => reject({status: 500, message: "Internal Server Error !"}));
@@ -71,7 +71,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 					}
 				})
 				.then(product => {
-					resolve({status: 200, listproduct: product});
+					resolve({status: 200, message: "123123!"});
 
 				})
 				.catch(err => reject({status: 500, message: "Internal Server Error !"}));
@@ -93,7 +93,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 					}
 				})
 				.then(product => {
-					resolve({status: 200, listproduct: product});
+					resolve({status: 200, message: "123123!"});
 
 				})
 				.catch(err => reject({status: 500, message: "Internal Server Error !"}));
