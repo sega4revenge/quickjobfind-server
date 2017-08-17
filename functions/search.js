@@ -4,11 +4,12 @@ const product = new require('../models/product');
 const bcrypt = new require('bcryptjs');
 
 exports.mSearch = (searchkey,location, category,typeArrange) =>
-	console.log("keysearch1 = " + searchkey);
-	console.log("category1 = " + category);
-	console.log("location1 = " + location);
-	console.log("typeArrange1 = " + typeArrange);
+
 	new Promise((resolve,reject) => {
+		console.log("keysearch1 = " + searchkey );
+		console.log("category1 = " + category );
+		console.log("location1 = " + location );
+		console.log("typeArrange1 = " + typeArrange);
 		if(typeArrange==0)
 		{
 			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({created_at: -1})
