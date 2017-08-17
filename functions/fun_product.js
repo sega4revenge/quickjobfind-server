@@ -192,7 +192,7 @@ exports.allcomment = (productid) =>
 				path: "user comment",
 				// Get friends of friends - populate the 'friends' array for every friend
 				populate: {path: "user", select:  '_id name photoprofile'}
-			},{select : 'comment'})
+			},{productname : 0, price : 0})
 			.then(products => {
 
 				if (products.length === 0) {
