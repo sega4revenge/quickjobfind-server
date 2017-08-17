@@ -179,6 +179,40 @@ exports.productdetail = (productid) =>
 
 	});
 
+exports.allcomment = (productid) =>
+
+	new Promise((resolve, reject) => {
+
+		let ObjectId;
+		ObjectId = require("mongodb").ObjectID;
+
+		product.find({_id: ObjectId(productid)})
+			.populate({
+				path: "comment"
+			})
+			.then(products => {
+
+				if (products.length === 0) {
+
+					reject({status: 404, message: "Product Not Found !"});
+
+				} else {
+
+					return products[0];
+
+				}
+			})
+
+			.then(product => {
+
+
+				resolve({status: 200, product: product});
+
+			})
+
+			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+
+	});
 exports.uploadproduct = (productid, image) =>
 
 	new Promise((resolve, reject) => {

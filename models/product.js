@@ -15,10 +15,10 @@ const productSchema = mongoose.Schema({
     category            : String,
     address             : String,
     type                : String,
-    time : String,
+    time                : String,
     created_at          : String,
-    images: [String],
-	comment: [{type: Schema.Types.ObjectId, ref: 'comment'}]
+    images              : [String],
+	comment             : [{type: Schema.Types.ObjectId, ref: 'comment'}]
 });
 
 mongoose.Promise = global.Promise;
