@@ -152,7 +152,7 @@ exports.productdetail = (productid) =>
 		product.find({_id: ObjectId(productid)})
 			.populate({
 				path: "user comment",
-				select : 'comment',
+
 				// Get friends of friends - populate the 'friends' array for every friend
 				populate: {path: "user", select:  '_id name photoprofile'}
 			})
@@ -192,7 +192,7 @@ exports.allcomment = (productid) =>
 				path: "user comment",
 				// Get friends of friends - populate the 'friends' array for every friend
 				populate: {path: "user", select:  '_id name photoprofile'}
-			})
+			},{select : 'comment'})
 			.then(products => {
 
 				if (products.length === 0) {
