@@ -124,11 +124,6 @@ exports.addcomment = (userid, productid, content, time) =>
 					}
 				);
 				comment.find({productid: ObjectId(productid)})
-					.populate({
-						path: "user",
-						select: "_id name photoprofile"
-
-					})
 					.then(comments => {
 
 						if (comments.length === 0) {
@@ -140,9 +135,15 @@ exports.addcomment = (userid, productid, content, time) =>
 							return comments[0];
 
 						}
+					})
+					.then(comment => {
+
+
+						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
+
 					});
 
-				resolve({status: 201, message: "Comment Sucessfully !", comment: comments[0]});
+
 			})
 
 			.catch(err => {
