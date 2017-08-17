@@ -126,14 +126,12 @@ exports.addcomment = (userid, productid, content, time) =>
 				comment.find({productid: ObjectId(productid)})
 					.populate({
 						path: "user",
-
-						// Get friends of friends - populate the 'friends' array for every friend
 						select: "_id name photoprofile"
 
 					})
 					.then(comments => {
 
-						if (products.length === 0) {
+						if (comments.length === 0) {
 
 							reject({status: 404, message: "Product Not Found !"});
 
