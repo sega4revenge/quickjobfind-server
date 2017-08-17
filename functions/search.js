@@ -6,8 +6,15 @@ const bcrypt = new require('bcryptjs');
 exports.mSearch = (searchkey,location, category,typeArrange) =>
 
 	new Promise((resolve,reject) => {
+		if(typeArrange==0)
+		{
 
-		product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } )//, category: category ,$text: { $search: searchkey+" "+location }
+		}
+		if(typeArrange==1)
+		{
+		}
+		product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({created_at: 1})
+
 		//.find({ ,
 		//	productname:  /^.*\$searchkey.*$/i,
 			//location: 	/^.*\$location.*$/i,
