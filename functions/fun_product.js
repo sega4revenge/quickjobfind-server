@@ -188,7 +188,7 @@ exports.allcomment = (productid) =>
 
 		product.find({_id: ObjectId(productid)})
 			.populate({
-				path: "comment"
+				path: "comment", select : 'comment'
 			})
 			.then(products => {
 
