@@ -134,7 +134,7 @@ exports.addcomment = (userid, productid, content, time) =>
 
 						} else {
 
-							return comments[0];
+							return comments;
 
 						}
 					})
