@@ -187,12 +187,12 @@ exports.allcomment = (productid) =>
 		let ObjectId;
 		ObjectId = require("mongodb").ObjectID;
 
-		product.find({_id: ObjectId(productid)})
+		product.find({_id: ObjectId(productid)},{productname : 0, price : 0})
 			.populate({
 				path: "user comment",
 				// Get friends of friends - populate the 'friends' array for every friend
 				populate: {path: "user", select:  '_id name photoprofile'}
-			},{productname : 0, price : 0})
+			})
 			.then(products => {
 
 				if (products.length === 0) {
