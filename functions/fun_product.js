@@ -162,28 +162,9 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
-				let ObjectId;
-				ObjectId = require("mongodb").ObjectID;
-				comment.find({productid: ObjectId(productid)})
-					.populate("user", "_id name photoprofile" )
-					.then(comments => {
-
-						if (comments.length === 0) {
-
-							reject({status: 404, message: "Product Not Found !"});
-
-						} else {
-
-							return comments;
-
-						}
-					})
-					.then(comment => {
-
 
 						resolve({status: 201, message: "Comment Sucessfully !"});
 
-					});
 
 
 			})
