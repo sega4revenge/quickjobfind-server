@@ -13,7 +13,6 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 				.then(products => {
 
 					if (products.length === 0) {
-						console.log("nullllll = ");
 						reject({status: 404, message: "Product Not Found !"});
 
 					} else {
@@ -30,7 +29,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 		}
 		if(typeArrange==1)
 		{
-			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({created_at: -1})
+			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ,{comment: 0} ).sort({created_at: -1})
 				.populate("user")
 				.then(products => {
 
@@ -39,7 +38,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 						reject({status: 404, message: "Product Not Found !"});
 
 					} else {
-
+						console.log("products = " + products);
 						return products;
 
 					}
@@ -52,12 +51,12 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 		}
 		if(typeArrange==2)
 		{
-			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({price: 1})
+			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ,{comment: 0} ).sort({price: 1})
 				.populate("user")
 				.then(products => {
 
 					if (products.length === 0) {
-
+						console.log("products = " + products);
 						reject({status: 404, message: "Product Not Found !"});
 
 					} else {
@@ -74,7 +73,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 		}
 		if(typeArrange==3)
 		{
-			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ).sort({price: -1})
+			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category }  ,{comment: 0} ).sort({price: -1})
 				.populate("user")
 				.then(products => {
 
