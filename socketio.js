@@ -24,8 +24,10 @@ module.exports = io => {
 
 		// when the client emits 'adduser', this listens and executes
 		socket.on('adduser', function(username){
+
 			// we store the username in the socket session for this client
 			socket.username = username;
+			console.log(username);
 			// add the client's username to the global list
 			usernames[username] = socket.id;
 			// echo to client they've connected
