@@ -74,6 +74,26 @@ module.exports = router => {
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
     });
+	router.post('/refreshcomment', (req, res) => {
+		const productid = req.body.productid;
+
+		console.log(productid);
+		if (!productid) {
+
+			res.status(400).json({message: 'Invalid Request !'});
+
+		} else {
+			console.log(productid);
+			fun_product.refreshcomment(productid)
+				.then(result => res.json(result))
+				/*  .then(result => {
+
+					  res.status(result.status).json({message: result.message, product: result.product})
+				  })*/
+
+				.catch(err => res.status(err.status).json({message: err.message}));
+		}
+	});
 	router.post('/allcomment', (req, res) => {
 		const productid = req.body.productid;
 
