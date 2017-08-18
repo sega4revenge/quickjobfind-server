@@ -165,7 +165,7 @@ exports.addcomment = (userid, productid, content, time) =>
 					.then(comment => {
 
 
-						resolve({status: 201, message: "Comment Sucessfully !"});
+						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
 
 					});
 
