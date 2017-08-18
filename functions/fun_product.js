@@ -173,6 +173,7 @@ exports.productdetail = (productid) =>
 		ObjectId = require("mongodb").ObjectID;
 
 		product.find({_id: ObjectId(productid)})
+			.sort({time : -1})
 			.populate({
 				path: "user comment",
 
