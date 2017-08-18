@@ -116,7 +116,8 @@ exports.refreshcomment = (productid) =>
 					})
 					.then(comment => {
 
-						reject({status: 201,comment: comment});
+
+						resolve({status: 201,comment: comment});
 
 					})
 
@@ -161,6 +162,12 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				)
+					.then(comment => {
+
+						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
+
+					});
+
 
 			})
 
