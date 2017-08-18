@@ -116,8 +116,7 @@ exports.refreshcomment = (productid) =>
 					})
 					.then(comment => {
 
-
-						resolve({comment: comment});
+						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
 
 					})
 
@@ -153,21 +152,37 @@ exports.addcomment = (userid, productid, content, time) =>
 
 
 			.then(() => {
+				resolve({status: 201, message: "Comment Sucessfully !"});
 
-				product.findByIdAndUpdate(
-					productid,
-					{$push: {"comment": newcomment._id}},
-					{safe: true, upsert: true, new: true},
-					function (err, model) {
-						console.log(err);
-					}
-				)
-					.then(comment => {
-
-
-						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
-
-					});
+				// product.findByIdAndUpdate(
+				// 	productid,
+				// 	{$push: {"comment": newcomment._id}},
+				// 	{safe: true, upsert: true, new: true},
+				// 	function (err, model) {
+				// 		console.log(err);
+				// 	}
+				// );
+				// let ObjectId;
+				// ObjectId = require("mongodb").ObjectID;
+				// comment.find({productid: ObjectId(productid)})
+				// 	.populate("user", "_id name photoprofile" )
+				// 	.then(comments => {
+				//
+				// 		if (comments.length === 0) {
+				//
+				// 			reject({status: 404, message: "Product Not Found !"});
+				//
+				// 		} else {
+				//
+				// 			return comments;
+				//
+				// 		}
+				// 	})
+				// 	.then(comment => {
+				//
+				//
+				//
+				// 	});
 
 
 			})
