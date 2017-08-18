@@ -179,7 +179,7 @@ exports.productdetail = (productid) =>
 				// Get friends of friends - populate the 'friends' array for every friend
 				populate: {path: "user", select: "_id name photoprofile"}
 			})
-			.sort({time : -1})
+			.sort({time : 1})
 			.then(products => {
 
 				if (products.length === 0) {
