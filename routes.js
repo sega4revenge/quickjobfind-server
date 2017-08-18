@@ -233,10 +233,11 @@ module.exports = router => {
 			fun_product.addcomment(userid, productid,content, timestamp)
 
 				.then(result => {
-					fun_product.refreshcomment(productid)
-						.then(result => res.json(result))
+
 					res.status(result.status).json({message: result.message})
 				})
+			fun_product.refreshcomment(productid)
+				.then(result => res.json(result))
 				.catch(err => res.status(err.status).json({message: err.message}));
 		}
 	});
