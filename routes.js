@@ -235,7 +235,7 @@ module.exports = router => {
 				.then(result => {
 
 					res.status(result.status).json({message: result.message})
-				})
+				});
 			fun_product.refreshcomment(productid)
 				.then(result => res.json(result))
 				.catch(err => res.status(err.status).json({message: err.message}));
