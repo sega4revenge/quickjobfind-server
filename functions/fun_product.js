@@ -162,11 +162,9 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				)
-					.then(comment => {
 
-						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
+						resolve({status: 201, message: "Comment Sucessfully !"});
 
-					});
 
 
 			})
