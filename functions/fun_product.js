@@ -116,7 +116,7 @@ exports.refreshcomment = (productid) =>
 					})
 					.then(comment => {
 
-						resolve({status: 201, message: "Comment Sucessfullyyyy !", comment: comment});
+						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
 
 					})
 
