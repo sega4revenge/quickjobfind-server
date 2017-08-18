@@ -23,11 +23,11 @@ module.exports = io => {
 		});
 
 		// when the client emits 'adduser', this listens and executes
-		socket.on('adduser', function(username){
+		socket.on('add user', function(username){
 
 			// we store the username in the socket session for this client
 			socket.username = username;
-			console.log(username);
+			console.log(username + " đã online");
 			// add the client's username to the global list
 			usernames[username] = socket.id;
 			// echo to client they've connected
@@ -61,9 +61,9 @@ module.exports = io => {
 
 		// when the user sends a private message to a user.. perform this
 		socket.on('msg_user', function(usr, username, msg) {
-			//console.log("From user: "+username);
-			//console.log("To user: "+usr);
-			//console.log(usernames);
+		/*	console.log("From user: "+username);
+			console.log("To user: "+usr);
+			console.log(usernames);*/
 			io.sockets.socket(usernames[usr]).emit('msg_user_handle', username, msg);
 
 			fs.writeFile("chat_data.txt", msg, function(err) {
