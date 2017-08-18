@@ -95,6 +95,45 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 			});
 	});
 
+exports.refreshcomment = (productid) =>
+	new Promise((resolve, reject) => {
+
+				let ObjectId;
+				ObjectId = require("mongodb").ObjectID;
+				comment.find({productid: ObjectId(productid)})
+					.populate("user", "_id name photoprofile" )
+					.then(comments => {
+
+						if (comments.length === 0) {
+
+							reject({status: 404, message: "Product Not Found !"});
+
+						} else {
+
+							return comments;
+
+						}
+					})
+					.then(comment => {
+
+
+						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
+
+					})
+
+			.catch(err => {
+
+				if (err.code === 11000) {
+
+					reject({status: 409, message: "Comment Already Registered !"});
+
+				} else {
+					reject({status: 500, message: "Internal Server Error !"});
+					throw err;
+
+				}
+			});
+	});
 
 exports.addcomment = (userid, productid, content, time) =>
 
@@ -123,28 +162,9 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
-				let ObjectId;
-				ObjectId = require("mongodb").ObjectID;
-				comment.find({productid: ObjectId(productid)})
-					.populate("user", "_id name photoprofile" )
-					.then(comments => {
 
-						if (comments.length === 0) {
+						resolve({status: 201, message: "Comment Sucessfully !"});
 
-							reject({status: 404, message: "Product Not Found !"});
-
-						} else {
-
-							return comments;
-
-						}
-					})
-					.then(comment => {
-
-
-						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
-
-					});
 
 
 			})
@@ -161,8 +181,7 @@ exports.addcomment = (userid, productid, content, time) =>
 
 				}
 			});
-	})
-;
+	});
 
 
 exports.productdetail = (productid) =>
@@ -175,10 +194,11 @@ exports.productdetail = (productid) =>
 		product.find({_id: ObjectId(productid)})
 			.populate({
 				path: "user comment",
-
+				options: { sort: { 'time': -1 } },
 				// Get friends of friends - populate the 'friends' array for every friend
-				populate: {path: "user", select: "_id name photoprofile"}
+				populate: {path: "user", select: "_id name photoprofile" }
 			})
+
 			.then(products => {
 
 				if (products.length === 0) {
