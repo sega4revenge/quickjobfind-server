@@ -228,10 +228,10 @@ exports.productdetail = (productid,userid) =>
 
 					}
 					else {
-						console.log(products[0].view + 1+"");
+						console.log(parseInt(products[0].view));
 						product.findByIdAndUpdate(
 							productid,
-							{$push: {"view": products[0].view + 1}},
+							{$push: {"view": parseInt(products[0].view) + 1}},
 							{safe: true, upsert: true, new: true},
 							function (err, model) {
 								console.log(err);
