@@ -225,7 +225,7 @@ exports.productdetail = (productid,userid) =>
 
 				} else {
 
-					if(products[0].user._id = userid){
+					if(products[0].user._id = ObjectId(userid)){
 						console.log("not ok");
 					}
 					else {
