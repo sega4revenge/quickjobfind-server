@@ -218,9 +218,8 @@ exports.productdetail = (productid,userid) =>
 			})
 
 			.then(products => {
-
 				if (products.length === 0) {
-					if(products._id === userid){
+					if(products._id = userid){
 						console.log("trung id");
 					}
 					else {
