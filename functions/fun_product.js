@@ -236,7 +236,7 @@ exports.productdetail = (productid,userid) =>
 						);
 					}
 					else {
-						console.log("not ok");
+						console.log("notok");
 
 					}
 					return products[0];
