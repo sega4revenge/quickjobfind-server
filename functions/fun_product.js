@@ -51,6 +51,7 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				address: address,
 				description: description,
 				created_at: timestamp,
+				view : 0,
 				type: type
 			});
 		} else {
@@ -228,7 +229,7 @@ exports.productdetail = (productid,userid) =>
 						console.log("ok");
 						product.findByIdAndUpdate(
 							productid,
-							{$set: {"view": 100}},
+							{$set: {"view": products.view + 1 }},
 							{safe: true, upsert: true, new: true},
 							function (err, model) {
 								console.log(err);
