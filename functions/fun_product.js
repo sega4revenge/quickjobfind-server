@@ -225,7 +225,7 @@ exports.productdetail = (productid,userid) =>
 				} else {
 
 					if(products[0].user._id !== userid){
-						console.log(parseInt(products[0].view));
+						console.log("ok");
 						product.findByIdAndUpdate(
 							productid,
 							{$push: {"view": parseInt(products[0].view) + 1}},
@@ -237,6 +237,7 @@ exports.productdetail = (productid,userid) =>
 					}
 					else {
 						console.log("not ok");
+
 					}
 					return products[0];
 
