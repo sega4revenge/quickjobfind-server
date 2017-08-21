@@ -56,6 +56,7 @@ module.exports = router => {
 	});
     router.post('/productdetail', (req, res) => {
         const productid = req.body.productid;
+		const userid = req.body.userid;
 
         console.log(productid);
         if (!productid) {
@@ -64,7 +65,7 @@ module.exports = router => {
 
         } else {
             console.log(productid);
-            fun_product.productdetail(productid)
+            fun_product.productdetail(productid,userid)
                 .then(result => res.json(result))
               /*  .then(result => {
 
@@ -188,6 +189,8 @@ module.exports = router => {
                 .catch(err => res.status(err.status).json({message: err.message}));
         }
     });
+
+
     router.post('/createproduct', (req, res) => {
         const userid = req.body.user;
         const productname = req.body.productname;
@@ -233,11 +236,9 @@ module.exports = router => {
 			fun_product.addcomment(userid, productid,content, timestamp)
 
 				.then(result => {
-
-					res.status(result.status).json({message: result.message})
-				});
-			fun_product.refreshcomment(productid)
-				.then(result => res.json(result))
+					fun_product.refreshcomment(productid)
+					res.status(result.status).json({message: result.message,comment: result.comment})
+				})
 				.catch(err => res.status(err.status).json({message: err.message}));
 		}
 	});

@@ -116,7 +116,7 @@ exports.refreshcomment = (productid) =>
 					})
 					.then(comment => {
 
-						resolve({status: 201, message: "Comment Sucessfully !", comment: comment});
+						resolve({comment: comment});
 
 					})
 
@@ -154,14 +154,14 @@ exports.addcomment = (userid, productid, content, time) =>
 			.then(() => {
 				resolve({status: 201, message: "Comment Sucessfully !"});
 
-				// product.findByIdAndUpdate(
-				// 	productid,
-				// 	{$push: {"comment": newcomment._id}},
-				// 	{safe: true, upsert: true, new: true},
-				// 	function (err, model) {
-				// 		console.log(err);
-				// 	}
-				// );
+				product.findByIdAndUpdate(
+					productid,
+					{$push: {"comment": newcomment._id}},
+					{safe: true, upsert: true, new: true},
+					function (err, model) {
+						console.log(err);
+					}
+				);
 				// let ObjectId;
 				// ObjectId = require("mongodb").ObjectID;
 				// comment.find({productid: ObjectId(productid)})
@@ -202,7 +202,7 @@ exports.addcomment = (userid, productid, content, time) =>
 	});
 
 
-exports.productdetail = (productid) =>
+exports.productdetail = (productid,userid) =>
 
 	new Promise((resolve, reject) => {
 
@@ -220,7 +220,12 @@ exports.productdetail = (productid) =>
 			.then(products => {
 
 				if (products.length === 0) {
-
+					if(products._id === userid){
+						console.log("trung id");
+					}
+					else {
+						console.log("khong trung id");
+					}
 					reject({status: 404, message: "Product Not Found !"});
 
 				} else {

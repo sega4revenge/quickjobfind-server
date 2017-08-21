@@ -17,6 +17,7 @@ const productSchema = mongoose.Schema({
     type                : String,
     time                : String,
     created_at          : String,
+    view                : String,
     images              : [String],
 	comment             : [{type: Schema.Types.ObjectId, ref: 'comment'}]
 });
