@@ -223,7 +223,7 @@ exports.productdetail = (productid,userid) =>
 					reject({status: 404, message: "Product Not Found !"});
 
 				} else {
-					console.log("user1: " + products[0].user);
+					console.log("user1: " + products[0].user._id);
 					console.log("user2: " + userid);
 					if(products[0].user === userid){
 						console.log("trung id");
