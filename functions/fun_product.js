@@ -225,7 +225,7 @@ exports.productdetail = (productid,userid) =>
 				} else {
 					console.log("user1: " + products[0].user._id);
 					console.log("user2: " + userid);
-					if(products[0].user._id === userid){
+					if(products[0].user._id.trim(userid)){
 						console.log("trung id");
 					}
 					else {
