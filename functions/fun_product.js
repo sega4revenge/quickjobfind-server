@@ -219,16 +219,16 @@ exports.productdetail = (productid,userid) =>
 
 			.then(products => {
 				if (products.length === 0) {
-					if(products._id = userid){
+
+					reject({status: 404, message: "Product Not Found !"});
+
+				} else {
+					if(products[0]._id === userid){
 						console.log("trung id");
 					}
 					else {
 						console.log("khong trung id");
 					}
-					reject({status: 404, message: "Product Not Found !"});
-
-				} else {
-
 					return products[0];
 
 				}

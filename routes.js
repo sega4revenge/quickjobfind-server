@@ -64,7 +64,6 @@ module.exports = router => {
             res.status(400).json({message: 'Invalid Request !'});
 
         } else {
-            console.log(productid);
             fun_product.productdetail(productid,userid)
                 .then(result => res.json(result))
               /*  .then(result => {
