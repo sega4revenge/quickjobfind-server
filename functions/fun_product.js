@@ -223,13 +223,19 @@ exports.productdetail = (productid,userid) =>
 					reject({status: 404, message: "Product Not Found !"});
 
 				} else {
-					console.log("user1: " + products[0].user._id);
-					console.log("user2: " + userid);
+
 					if(products[0].user._id = userid){
-						console.log("trung id");
+
 					}
 					else {
-						console.log("khong trung id");
+						product.findByIdAndUpdate(
+							productid,
+							{$push: {"view": products.view + 1}},
+							{safe: true, upsert: true, new: true},
+							function (err, model) {
+								console.log(err);
+							}
+						);
 					}
 					return products[0];
 
