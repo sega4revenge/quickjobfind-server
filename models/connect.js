@@ -11,5 +11,5 @@ const mongoose = require('mongoose');
 		authdb: 'admin'
 	}
 };*/
-mongoose.connect('mongodb://192.168.1.42:27017/quickjobfind'/*,options*/);
+mongoose.connect('mongodb://45.77.36.109:27017/quickjobfind'/*,options*/);
 module.exports = mongoose;
