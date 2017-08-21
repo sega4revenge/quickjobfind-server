@@ -226,7 +226,7 @@ exports.productdetail = (productid,userid) =>
 				} else {
 					console.log(products[0].user._id);
 					console.log(ObjectId(userid));
-					if(products[0].user._id === ObjectId(userid)){
+					if(products[0].user._id = ObjectId(userid)){
 						console.log("not ok");
 					}
 					else {
