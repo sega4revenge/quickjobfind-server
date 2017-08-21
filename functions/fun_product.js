@@ -228,7 +228,7 @@ exports.productdetail = (productid,userid) =>
 						console.log("ok");
 						product.findByIdAndUpdate(
 							productid,
-							{$set: {"view": 50}},
+							{$set: {"view": 100}},
 							{safe: true, upsert: true, new: true},
 							function (err, model) {
 								console.log(err);
