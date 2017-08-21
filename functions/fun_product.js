@@ -225,7 +225,10 @@ exports.productdetail = (productid,userid) =>
 
 				} else {
 
-					if(products[0].user._id !== userid){
+					if(products[0].user._id = userid){
+						console.log("not ok");
+					}
+					else {
 						console.log("ok");
 						product.findByIdAndUpdate(
 							productid,
@@ -235,10 +238,6 @@ exports.productdetail = (productid,userid) =>
 								console.log(err);
 							}
 						);
-					}
-					else {
-						console.log("notok");
-
 					}
 					return products[0];
 
