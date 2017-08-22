@@ -1,7 +1,7 @@
 'use strict';
 const FCM = require("fcm-node");
 
-const fcm = new FCM("AIzaSyAMEnA3NTcpFdVStevuGUyBG9RfGFIgerw");
+const fcm = new FCM("AIzaSyDbZnEq9-lpTvAk41v_fSe_ijKRIIj6R6Y");
 exports.push_mess = (msg,deviceId) =>
 
     new Promise((resolve, reject) => {
