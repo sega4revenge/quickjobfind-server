@@ -16,9 +16,10 @@ exports.push_mess = (message,deviceId) =>
 
 		fcm.send(message, function(err, response){
 			if (err) {
-				resolve({status: 201, message: 'User Registered Sucessfully !'});
-			} else {
 				reject({status: 409, message: 'Error !'});
+			} else {
+				resolve({status: 201, message: 'User Registered Sucessfully !',response : response});
+
 			}
 		});
 
