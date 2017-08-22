@@ -7,7 +7,7 @@ exports.push_mess = (message,deviceId) =>
     new Promise((resolve, reject) => {
 
 		const message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-			to: deviceId,
+			registration_ids : deviceId,
 
 			data: {
 				ar_message: message
