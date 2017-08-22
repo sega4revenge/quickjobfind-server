@@ -14,13 +14,13 @@ exports.push_mess = (message,deviceId) =>
 		};
 
 
-		fcm.send(message, function(err, response){
-			if (err) {
-				console.log("Something has gone wrong!");
-			} else {
+		fcm.send(message)
+			.then(function(response){
 				console.log("Successfully sent with response: ", response);
-			}
-		});
-
+			})
+			.catch(function(err){
+				console.log("Something has gone wrong!");
+				console.error(err);
+			})
 
     });
