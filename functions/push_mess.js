@@ -14,21 +14,13 @@ exports.push_mess = (message,deviceId) =>
 		};
 
 
-		fcm.send(message)
-			.then(() => resolve({status: 201, message: 'Successfully sent with response !'}))
-			.catch(err => {
-
-				if (err.code === 11000) {
-
-
-						reject({status: 409, message: 'User Already Registered !'});
-
-				} else {
-					reject({status: 500, message: 'Internal Server Error !'});
-					throw err;
-
-				}
-			});
+		fcm.send(message, function(err, response){
+			if (err) {
+				console.log("Something has gone wrong!");
+			} else {
+				console.log("Successfully sent with response: ", response);
+			}
+		});
 
 
     });
