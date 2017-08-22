@@ -253,12 +253,11 @@ module.exports = router => {
 		} else {
 
 			push_mess.push_mess(message,deviceId)
-				//
-				// .then(result => {
-				// 	fun_product.refreshcomment(productid)
-				// 	res.status(result.status).json({message: result.message,comment: result.comment})
-				// })
-				// .catch(err => res.status(err.status).json({message: err.message}));
+
+				.then(result => {
+					res.status(result.status).json({message: result.message})
+				})
+				.catch(err => res.status(err.status).json({message: err.message}));
 		}
 	});
     router.get('/data/:id', (req, res) => {
