@@ -20,7 +20,7 @@ exports.push_mess = (message,deviceId) =>
 				{ "data": {
 					"message": message
 				},
-					"to" : deviceId
+					"to" : JSON.stringify(deviceId)
 				}
 			)
 		}, function(error, response, body) {
