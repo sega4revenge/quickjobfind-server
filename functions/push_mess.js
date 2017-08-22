@@ -6,7 +6,7 @@ exports.push_mess = (msg,deviceId) =>
 
     new Promise((resolve, reject) => {
 		const m = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-			registration_ids: ["dT0HzvO4J-g:APA91bHHsYDB_9A5rfo7lmoRu0tpHN-AOA6629YaYycd2KqkxyUjog93RRp-JiK9VvPhYNJlMwWpilXI3aFsqq1rh24dRkXZ6YkcYjhbgalOuCfpRh9pXtSGTh44IBNpXtvPTnEtf3OB", "frR-tTgnn-E:APA91bGdaf7qqI4oVAC4qEMgjYqU8NoIob2B8BaXnJnSVaw0bDnV0qVhzBfaRbMZ1xKKTxFH4rn8GOs46pGRE8x_IrRH-lBRXR0wMYp-LKVtUIsnf4IHaHIbbkC7mo-q9hvbVFPQ9pvv"],
+			registration_ids: ["dT0HzvO4J-g:APA91bHHsYDB_9A5rfo7lmoRu0tpHN-AOA6629YaYycd2KqkxyUjog93RRp-JiK9VvPhYNJlMwWpilXI3aFsqq1rh24dRkXZ6YkcYjhbgalOuCfpRh9pXtSGTh44IBNpXtvPTnEtf3OB", "fTed3-MBE9U:APA91bGm9lzrdn2341mCJsumZqA6Ui9rqHOjJTW7Br_Z_YZqdHaFiiclfZ6q2FMjTpZxMXRTVx7hYs8YFDFYy5S3JGAIjjTXes14cSEHCu7rVo_BouYrjdQzgUd859sKFXPyxfQfgRev"],
 
 			data: {
 				message: msg
