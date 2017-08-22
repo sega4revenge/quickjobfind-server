@@ -26,12 +26,16 @@ exports.push_mess = (message,deviceId) =>
 		}, function(error, response, body) {
 			if (error) {
 				console.error(error, response, body);
+				resolve({message: 'ERROR 1 !'});
 			}
 			else if (response.statusCode >= 400) {
 				console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body);
+				resolve({message: 'ERROR 2 !'});
+
 			}
 			else {
 				console.log('Done!')
+				resolve({status: 201, message: 'SEND OK !'});
 			}
 		});
     });
