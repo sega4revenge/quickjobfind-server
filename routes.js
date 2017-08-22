@@ -255,9 +255,13 @@ module.exports = router => {
 			push_mess.push_mess(message,deviceId)
 
 				.then(result => {
+					console.log("send");
 					res.status(result.status).json({message: result.message})
 				})
-				.catch(err => res.status(err.status).json({message: err.message}));
+				.catch(err => {
+					console.log("se3246nd");
+					res.status(err.status).json({message: err.message});
+		})
 		}
 	});
     router.get('/data/:id', (req, res) => {
