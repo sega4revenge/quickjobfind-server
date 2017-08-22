@@ -8,6 +8,7 @@ const search = require('./functions/search');
 const sms = require('./functions/speedsms');
 const profile = require('./functions/profile');
 const fun_product = require('./functions/fun_product');
+const push_mess = require('./functions/push_mess');
 const fs = require('fs'),
     url = require('url');
 const password = require('./functions/password');
@@ -15,6 +16,7 @@ const config = require('./config/config.json');
 const formidable = require('formidable');
 const path = require('path');
 const uploadDir = path.join('./uploads/');
+
 
 module.exports = router => {
 
@@ -241,6 +243,24 @@ module.exports = router => {
 				.catch(err => res.status(err.status).json({message: err.message}));
 		}
 	});
+	router.post('/push_mess', (req, res) => {
+		const message = req.body.message;
+		const deviceId = req.body.deviceId;
+		if (!message) {
+
+			res.status(400).json({message: 'Invalid Request !'});
+
+		} else {
+
+			push_mess.push_mess(message,deviceId)
+				//
+				// .then(result => {
+				// 	fun_product.refreshcomment(productid)
+				// 	res.status(result.status).json({message: result.message,comment: result.comment})
+				// })
+				// .catch(err => res.status(err.status).json({message: err.message}));
+		}
+	});
     router.get('/data/:id', (req, res) => {
 
 
@@ -375,4 +395,5 @@ module.exports = router => {
             return false;
         }
     }
+
 };

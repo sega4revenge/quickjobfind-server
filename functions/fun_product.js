@@ -224,13 +224,9 @@ exports.productdetail = (productid,userid) =>
 					reject({status: 404, message: "Product Not Found !"});
 
 				} else {
-					console.log(products[0].user._id);
-					console.log(ObjectId(userid));
 					if(products[0].user._id.toString() === userid){
-						console.log("not ok");
 					}
 					else {
-						console.log("ok");
 						product.findByIdAndUpdate(
 							productid,
 							{$set: {"view": products[0].view + 1 }},
