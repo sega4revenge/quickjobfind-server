@@ -2,19 +2,19 @@
 const FCM = require("fcm-node");
 
 const fcm = new FCM("AIzaSyAgSMnyOiYANTLM1kamaTclhUGgj7wCu2I");
-exports.push_mess = (message,deviceId) =>
+exports.push_mess = (msg,deviceId) =>
 
     new Promise((resolve, reject) => {
-		var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
+		var m = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
 			to : deviceId,
 
 			data: {
-				message: message
+				message: msg
 			}
 		};
-		console.log(message);
+		console.log(msg);
 
-		fcm.send(message, function(err, response){
+		fcm.send(m, function(err, response){
 			if (err) {
 				reject({status: 409, message: 'Error !'});
 			} else {
