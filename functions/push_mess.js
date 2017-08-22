@@ -19,7 +19,6 @@ exports.push_mess = (message,deviceId) =>
 				reject({status: 409, message: 'Error !'});
 			} else {
 				resolve({status: 201, message: 'User Registered Sucessfully !',response : response});
-
 			}
 		});
 
