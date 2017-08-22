@@ -12,6 +12,7 @@ exports.push_mess = (message,deviceId) =>
 				ar_message: message
 			}
 		};
+		console.log("send");
 		fcm.send(message)
 			.then(() => resolve({status: 201, message: 'Successfully sent with response !'}))
 			.catch(err => {
