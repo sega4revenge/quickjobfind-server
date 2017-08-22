@@ -6,10 +6,10 @@ exports.push_mess = (message,deviceId) =>
 
     new Promise((resolve, reject) => {
 		var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-			registration_ids : deviceId,
+			to : deviceId,
 
 			data: {
-				ar_message: message
+				message: message
 			}
 		};
 
