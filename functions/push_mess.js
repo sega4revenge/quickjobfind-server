@@ -5,7 +5,7 @@ const fcm = new FCM("AIzaSyAgSMnyOiYANTLM1kamaTclhUGgj7wCu2I");
 exports.push_mess = (message,deviceId) =>
 
     new Promise((resolve, reject) => {
-		console.log("send");
+
 		const message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
 			to: deviceId,
 
@@ -13,7 +13,7 @@ exports.push_mess = (message,deviceId) =>
 				ar_message: message
 			}
 		};
-
+		console.log("send");
 		fcm.send(message)
 			.then(() => resolve({status: 201, message: 'Successfully sent with response !'}))
 			.catch(err => {
