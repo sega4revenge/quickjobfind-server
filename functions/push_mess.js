@@ -20,7 +20,7 @@ exports.push_mess = (message,deviceId) =>
 				{ "data": {
 					"message": message
 				},
-					"to" :  ["dT0HzvO4J-g:APA91bHHsYDB_9A5rfo7lmoRu0tpHN-AOA6629YaYycd2KqkxyUjog93RRp-JiK9VvPhYNJlMwWpilXI3aFsqq1rh24dRkXZ6YkcYjhbgalOuCfpRh9pXtSGTh44IBNpXtvPTnEtf3OB","ee751GaamwU:APA91bGOmN4Nn5Rykoz5I1gVvRaAZ1b-f3OhJDAQs74EJNxY_-qkOttf-uLoFeh-_2mTT-HLYDvyN9V5ACUYej1l-MykW7jf_PYf8fm6VHYoK1EzDcyuTX08gpYHoo3NrzlNJFq6g70E"]
+					"to" : "dT0HzvO4J-g:APA91bHHsYDB_9A5rfo7lmoRu0tpHN-AOA6629YaYycd2KqkxyUjog93RRp-JiK9VvPhYNJlMwWpilXI3aFsqq1rh24dRkXZ6YkcYjhbgalOuCfpRh9pXtSGTh44IBNpXtvPTnEtf3OB"
 				}
 			)
 		}, function(error, response, body) {
