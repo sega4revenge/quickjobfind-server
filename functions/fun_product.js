@@ -45,7 +45,7 @@ exports.informationUser = userid =>
 				console.log(userid);
 
 				if (products.length === 0) {
-					user.find({_id: userid})
+					user.find({ _id: Object(userid) })
 					.then(user => {
 
 							resolve({status: 202, user: user });
