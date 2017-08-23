@@ -1,6 +1,7 @@
 "use strict";
 
 const product = new require("../models/product");
+const user = new require("../models/user");
 const comment = new require("../models/comment");
 const FCM = require("fcm-node");
 const fcm = new FCM("AIzaSyDbZnEq9-lpTvAk41v_fSe_ijKRIIj6R6Y");
@@ -44,8 +45,12 @@ exports.informationUser = userid =>
 				console.log(userid);
 
 				if (products.length === 0) {
+					user.find({_id: userid})
+					.then(user => {
 
-					reject({status: 404, message: "userid Not Found !"});
+							resolve({status: 202, user: user });
+					})
+					.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
 				} else {
 
