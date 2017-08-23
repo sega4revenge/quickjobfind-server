@@ -39,7 +39,7 @@ exports.informationUser = userid =>
 	new Promise((resolve, reject) => {
 
 		product.find({user: userid})
-			.populate("user")
+			// .populate("user")
 			.then(products => {
 
 				console.log(userid);
