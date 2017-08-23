@@ -1,7 +1,6 @@
 "use strict";
 
 const product = new require("../models/product");
-const user = new require('../models/user');
 const comment = new require("../models/comment");
 const FCM = require("fcm-node");
 const fcm = new FCM("AIzaSyDbZnEq9-lpTvAk41v_fSe_ijKRIIj6R6Y");
@@ -34,41 +33,32 @@ exports.allproduct = () =>
 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
 	});
-// exports.informationUser = userid =>
-//
-// 	new Promise((resolve, reject) => {
-// 		let ObjectId;
-// 		ObjectId = require('mongodb').ObjectID;
-// 		product.find({user: userid})
-// 			// .populate("user")
-// 			.then(products => {
-//
-// 				console.log(userid);
-//
-// 				if (products.length === 0) {
-//
-// 					user.find({ _id: ObjectId(userid)})
-//
-// 						.exec(function (err, post) {
-// 							if(err) throw err;
-// 							console.log(post);
-// 						})
-//
-// 					 .then(users => resolve(users[0]))
-// 					.catch(err => reject({status: 500, message: "Internal Server Error !"}));
-//
-// 				} else {
-//
-// 					return products;
-//
-// 				}
-// 			})
-// 			.then(product => {
-//
-// 				resolve({status: 200, listproduct: product });
-// 			})
-// 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
-// 	});
+exports.informationUser = userid =>
+
+	new Promise((resolve, reject) => {
+
+		product.find({user: userid})
+
+			.then(products => {
+
+				console.log(userid);
+
+				if (products.length === 0) {
+
+					reject({status: 404, message: "userid Not Found !"});
+
+				} else {
+
+					return products;
+
+				}
+			})
+			.then(product => {
+
+				resolve({status: 200, listproduct: product });
+			})
+			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+	});
 
 exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>
 
