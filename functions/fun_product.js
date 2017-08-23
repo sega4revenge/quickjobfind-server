@@ -41,7 +41,7 @@ exports.informationUser = userid =>
 
 			.then(product => {
 				console.log(userid);
-				if (products.length === 0) {
+				if (product.length === 0) {
 
 					reject({status: 404, message: "userid Not Found !"});
 
