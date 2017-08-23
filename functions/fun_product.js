@@ -34,41 +34,41 @@ exports.allproduct = () =>
 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
 	});
-exports.informationUser = userid =>
-
-	new Promise((resolve, reject) => {
-		let ObjectId;
-		ObjectId = require('mongodb').ObjectID;
-		product.find({user: userid})
-			.populate("user")
-			.then(products => {
-
-				console.log(userid);
-
-				if (products.length === 0) {
-
-					user.find({ _id: ObjectId(userid)})
-
-						.exec(function (err, post) {
-							if(err) throw err;
-							console.log(post);
-						})
-
-					 .then(users => resolve(users[0]))
-					.catch(err => reject({status: 500, message: "Internal Server Error !"}));
-
-				} else {
-
-					return products;
-
-				}
-			})
-			.then(product => {
-
-				resolve({status: 200, listproduct: product });
-			})
-			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
-	});
+// exports.informationUser = userid =>
+//
+// 	new Promise((resolve, reject) => {
+// 		let ObjectId;
+// 		ObjectId = require('mongodb').ObjectID;
+// 		product.find({user: userid})
+// 			// .populate("user")
+// 			.then(products => {
+//
+// 				console.log(userid);
+//
+// 				if (products.length === 0) {
+//
+// 					user.find({ _id: ObjectId(userid)})
+//
+// 						.exec(function (err, post) {
+// 							if(err) throw err;
+// 							console.log(post);
+// 						})
+//
+// 					 .then(users => resolve(users[0]))
+// 					.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+//
+// 				} else {
+//
+// 					return products;
+//
+// 				}
+// 			})
+// 			.then(product => {
+//
+// 				resolve({status: 200, listproduct: product });
+// 			})
+// 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+// 	});
 
 exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>
 
