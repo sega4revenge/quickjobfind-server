@@ -128,7 +128,7 @@ exports.refreshcomment = (productid) =>
 					reject({status: 409, message: "Comment Already Registered !"});
 
 				} else {
-					reject({status: 500, message: "Internal Server Error !"});
+					reject({status: 500, message: "Internal Server Error2 !"});
 					throw err;
 
 				}
@@ -203,7 +203,7 @@ exports.addcomment = (userid, productid, content, time) =>
 					reject({status: 409, message: "Comment Already Registered !"});
 
 				} else {
-					reject({status: 500, message: "Internal Server Error !"});
+					reject({status: 500, message: "Internal Server Error 1!"});
 					throw err;
 
 				}
