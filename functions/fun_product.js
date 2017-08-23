@@ -153,8 +153,6 @@ exports.addcomment = (userid, productid, content, time) =>
 
 
 			.then(() => {
-				resolve({status: 201, message: "Comment Sucessfully !"});
-
 				product.findByIdAndUpdate(
 					productid,
 					{$push: {"comment": newcomment._id}},
@@ -163,6 +161,16 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
+				refreshcomment(productid)
+
+					.then(result => {
+
+						resolve({status: 201, comment : result.comment});
+					})
+					.catch(err => res.status(err.status).json({message: err.message}));
+
+
+
 				// let ObjectId;
 				// ObjectId = require("mongodb").ObjectID;
 				// comment.find({productid: ObjectId(productid)})
