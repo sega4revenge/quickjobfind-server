@@ -100,12 +100,11 @@ module.exports = router => {
 		const userid = req.body.userid;
 
 		console.log(userid);
-		if (!userid) {
 
+		if (!userid) {
 			res.status(400).json({message: 'Invalid Request !'});
 
 		} else {
-
 			fun_product.informationUser(userid)
 				.then(result => res.json(result))
 				.catch(err => res.status(err.status).json({message: err.message}));

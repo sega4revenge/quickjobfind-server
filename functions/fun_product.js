@@ -33,16 +33,22 @@ exports.allproduct = () =>
 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
 	});
-exports.informationUser = (userid) =>
+exports.informationUser = userid =>
 
 	new Promise((resolve, reject) => {
 
 		product.find({user: userid})
+
 			.then(product => {
+
 				if (products.length === 0) {
+
 					reject({status: 404, message: "userid Not Found !"});
+
 				} else {
+
 					return product;
+
 				}
 			})
 			.then(product => {
