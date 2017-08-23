@@ -2,6 +2,8 @@
 
 const product = new require("../models/product");
 const comment = new require("../models/comment");
+const FCM = require("fcm-node");
+const fcm = new FCM("AIzaSyDbZnEq9-lpTvAk41v_fSe_ijKRIIj6R6Y");
 exports.allproduct = () =>
 
 	new Promise((resolve, reject) => {
