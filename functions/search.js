@@ -8,7 +8,7 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 	new Promise((resolve,reject) => {
 		if(typeArrange==0)
 		{
-			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ,{comment: 0}).sort({created_at: -1})
+			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ,{comment: 0}).sort({view: -1})
 				.populate("user")
 				.then(products => {
 
@@ -30,7 +30,8 @@ exports.mSearch = (searchkey,location, category,typeArrange) =>
 		if(typeArrange==1)
 		{
 			product.find( {productname: {  $regex :  searchkey  }, address : { $regex: location },category: category } ,{comment: 0} ).sort({created_at: -1})
-				.populate("user")
+				.populate("" +
+					"+")
 				.then(products => {
 
 					if (products.length === 0) {

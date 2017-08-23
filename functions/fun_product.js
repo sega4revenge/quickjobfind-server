@@ -10,7 +10,7 @@ exports.allproduct = () =>
 		const d = new Date();
 		const timeStamp = d.getTime();
 		console.log("TIMESTAMP: " + timeStamp);
-		product.find({type: "1"}, {comment: 0})
+		product.find({type: "1"},{comment: 0})
 			.populate("user")
 			.then(products => {
 
@@ -32,6 +32,24 @@ exports.allproduct = () =>
 
 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
+	});
+exports.informationUser = (userid) =>
+
+	new Promise((resolve, reject) => {
+
+		product.find({user: userid},)
+			.then(product => {
+				if (products.length === 0) {
+					reject({status: 404, message: "userid Not Found !"});
+				} else {
+					return product;
+				}
+			})
+			.then(product => {
+
+				resolve({status: 200, listproduct: product });
+			})
+			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 	});
 
 exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>

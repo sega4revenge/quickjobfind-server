@@ -42,7 +42,7 @@ exports.resetPasswordInit = email =>
 		const random = randomstring.generate(8);
  
         user.find({ email: email })
- 
+
         .then(users => {
  
             if (users.length === 0) {
