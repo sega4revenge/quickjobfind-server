@@ -37,18 +37,19 @@ exports.informationUser = userid =>
 
 	new Promise((resolve, reject) => {
 
-		product.find({user: Object(userid)})
+		product.find({user: userid})
 
-			.then(product => {
+			.then(products => {
+
 				console.log(userid);
 
-				if (product.length === 0) {
+				if (products.length === 0) {
 
 					reject({status: 404, message: "userid Not Found !"});
 
 				} else {
 
-					return product;
+					return products;
 
 				}
 			})
