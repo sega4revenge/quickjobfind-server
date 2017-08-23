@@ -45,9 +45,10 @@ exports.informationUser = userid =>
 				console.log(userid);
 
 				if (products.length === 0) {
-					user.find({ _id: Object(userid) })
+					let ObjectId;
+					ObjectId = require('mongodb').ObjectID;
+					user.find({ _id: ObjectId(userid)})
 					.then(user => {
-
 							resolve({status: 202, user: user });
 					})
 					.catch(err => reject({status: 500, message: "Internal Server Error !"}));
