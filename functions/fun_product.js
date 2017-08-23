@@ -117,7 +117,7 @@ exports.refreshcomment = (productid) =>
 					})
 					.then(comment => {
 
-						reject({comment: comment});
+						resolve({comment: comment});
 
 					})
 
