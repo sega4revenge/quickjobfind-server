@@ -37,8 +37,8 @@ exports.informationUser = userid =>
 
 	new Promise((resolve, reject) => {
 
-		product.find({user: userid})
-			.populate("user")
+		product.find({user: Object(userid)})
+
 			.then(product => {
 				console.log(userid);
 
