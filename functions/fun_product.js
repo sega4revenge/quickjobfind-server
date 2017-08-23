@@ -111,16 +111,9 @@ exports.refreshcomment = (productid) =>
 
 						} else {
 
-							return comments;
-
+							reject({comment: comments});
 						}
 					})
-					.then(comment => {
-
-						reject({comment: comment});
-
-					})
-
 			.catch(err => {
 
 				if (err.code === 11000) {
