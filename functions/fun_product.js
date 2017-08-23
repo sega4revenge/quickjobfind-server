@@ -161,7 +161,7 @@ exports.addcomment = (userid, productid, content, time) =>
 						console.log(err);
 					}
 				);
-				refreshcomment(productid)
+				this.refreshcomment(productid)
 
 					.then(result => {
 
