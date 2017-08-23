@@ -7,6 +7,7 @@ exports.getProfile = userid =>
 
         let ObjectId;
         ObjectId = require('mongodb').ObjectID;
+
         user.find({ _id: ObjectId(userid)})
             .exec(function (err, post) {
                 if(err) throw err;

@@ -245,14 +245,14 @@ module.exports = router => {
 	});
 	router.post('/push_mess', (req, res) => {
 		const message = req.body.message;
-		const deviceId = req.body.deviceId;
+/*		const deviceId = req.body.deviceId;*/
 		if (!message) {
 
 			res.status(400).json({message: 'Invalid Request !'});
 
 		} else {
 
-			push_mess.push_mess(message,deviceId)
+			push_mess.push_messtotopic(message)
 
 				.then(result => {
 					console.log("send");
