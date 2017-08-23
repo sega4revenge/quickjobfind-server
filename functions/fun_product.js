@@ -95,7 +95,31 @@ exports.createproduct = (userid, prodctname, price, time, number, category, addr
 				}
 			});
 	});
+exports.push_messtotopic = (productid,msg) =>
 
+	new Promise((resolve, reject) => {
+		const m = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
+			to: '/topics/'+productid,
+
+			data: {
+				message: msg
+			}
+		};
+		console.log(msg);
+
+		fcm.send(m, function(err, response){
+			if (err) {
+				console.log(err);
+				reject({status: 409, message: 'MessToTopic Error !'});
+			} else {
+				console.log(response);
+				resolve({status: 201, message: 'MessToTopic Sucessfully !',response : response});
+
+			}
+		});
+
+
+	});
 exports.refreshcomment = (productid) =>
 	new Promise((resolve, reject) => {
 
@@ -169,6 +193,7 @@ exports.addcomment = (userid, productid, content, time) =>
 					})
 					.catch(err => res.status(err.status).json({message: err.message}));
 
+				this.push_messtotopic(productid,"Ahihi");
 
 
 				// let ObjectId;
