@@ -10,7 +10,7 @@ exports.allproduct = () =>
 		const d = new Date();
 		const timeStamp = d.getTime();
 		console.log("TIMESTAMP: " + timeStamp);
-		product.find({type: "1"},{comment: 0})
+		product.find({type: "1"}, {comment: 0})
 			.populate("user")
 			.then(products => {
 
@@ -33,32 +33,6 @@ exports.allproduct = () =>
 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
 	});
-// exports.informationUser = userid =>
-//
-// 	new Promise((resolve, reject) => {
-//
-// 		product.find({user: userid})
-//
-// 			.then(products => {
-//
-// 				console.log(userid);
-//
-// 				if (products.length === 0) {
-//
-// 					reject({status: 404, message: "userid Not Found !"});
-//
-// 				} else {
-//
-// 					return products;
-//
-// 				}
-// 			})
-// 			.then(product => {
-//
-// 				resolve({status: 200, listproduct: product });
-// 			})
-// 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
-// 	});
 
 exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>
 
@@ -152,27 +126,27 @@ exports.push_messtotopic = (productid,msg,type) =>
 exports.refreshcomment = (productid) =>
 	new Promise((resolve, reject) => {
 
-				let ObjectId;
-				ObjectId = require("mongodb").ObjectID;
-				comment.find({productid: ObjectId(productid)})
-					.populate("user", "_id name photoprofile" )
-					.then(comments => {
+		let ObjectId;
+		ObjectId = require("mongodb").ObjectID;
+		comment.find({productid: ObjectId(productid)})
+			.populate("user", "_id name photoprofile" )
+			.then(comments => {
 
-						if (comments.length === 0) {
+				if (comments.length === 0) {
 
-							reject({status: 404, message: "Product Not Found !"});
+					reject({status: 404, message: "Product Not Found !"});
 
-						} else {
+				} else {
 
-							return comments;
+					return comments;
 
-						}
-					})
-					.then(comment => {
+				}
+			})
+			.then(comment => {
 
-						resolve({comment: comment});
+				resolve({comment: comment});
 
-					})
+			})
 
 			.catch(err => {
 
