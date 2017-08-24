@@ -33,32 +33,32 @@ exports.allproduct = () =>
 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
 
 	});
-exports.informationUser = userid =>
-
-	new Promise((resolve, reject) => {
-
-		product.find({user: userid})
-
-			.then(products => {
-
-				console.log(userid);
-
-				if (products.length === 0) {
-
-					reject({status: 404, message: "userid Not Found !"});
-
-				} else {
-
-					return products;
-
-				}
-			})
-			.then(product => {
-
-				resolve({status: 200, listproduct: product });
-			})
-			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
-	});
+// exports.informationUser = userid =>
+//
+// 	new Promise((resolve, reject) => {
+//
+// 		product.find({user: userid})
+//
+// 			.then(products => {
+//
+// 				console.log(userid);
+//
+// 				if (products.length === 0) {
+//
+// 					reject({status: 404, message: "userid Not Found !"});
+//
+// 				} else {
+//
+// 					return products;
+//
+// 				}
+// 			})
+// 			.then(product => {
+//
+// 				resolve({status: 200, listproduct: product });
+// 			})
+// 			.catch(err => reject({status: 500, message: "Internal Server Error !"}));
+// 	});
 
 exports.createproduct = (userid, prodctname, price, time, number, category, address, description, timestamp, type) =>
 
